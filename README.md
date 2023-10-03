@@ -9,6 +9,7 @@ This repository is still a work in progress.
 Prerequisites
 -------------
 - `Python 3.x` *(optional)*
+- A Web Browser *(Tested with Chromium)*
 - Call of Duty Account
 - Battle.NET Account (PC Only for now)
 - Account API security settings set to open
