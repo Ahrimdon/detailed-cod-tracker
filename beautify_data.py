@@ -12,12 +12,33 @@ def replace_and_sort_keys_in_json(file_path, replacements):
             for key, value in obj.items():
                 new_key = replacements.get(key, key)
                 new_obj[new_key] = recursive_key_replace(value, replacements)
-                
+
+                if new_key == "mode": # Sort Game Modes by 'timePlayed' in descending order
+                    sorted_modes = dict(sorted(new_obj[new_key].items(), key=lambda item: item[1]['properties']['timePlayed'], reverse=True))
+                    new_obj[new_key] = sorted_modes
+
+                if new_key in ["Assault Rifles", "Shotguns", "Marksman Rifles", "Snipers", "LMGs", "Launchers", "Pistols", "SMGs", "Melee"]: # Sort Weapons by 'kills' in descending order
+                    sorted_weapons = dict(sorted(new_obj[new_key].items(), key=lambda item: item[1]['properties']['kills'], reverse=True))
+                    new_obj[new_key] = sorted_weapons
+
+                if new_key in ["Field Upgrades"]: # Sort Field Upgrades by 'uses' in descending order
+                    sorted_fieldupgrades = dict(sorted(new_obj[new_key].items(), key=lambda item: item[1]['properties']['uses'], reverse=True))
+                    new_obj[new_key] = sorted_fieldupgrades
+
+                if new_key in ["Tactical Equipment", "Lethal Equipment"]: # Sort Lethal and Tactical equipment by 'uses' in descending order
+                    sorted_equipment = dict(sorted(new_obj[new_key].items(), key=lambda item: item[1]['properties']['uses'], reverse=True))
+                    new_obj[new_key] = sorted_equipment
+
+                if new_key == "Scorestreaks": # Sort Lethal and Support Scorestreaks by 'awardedCount' in descending order
+                    for subcategory, scorestreaks in new_obj[new_key].items():
+                        sorted_scorestreaks = dict(sorted(scorestreaks.items(), key=lambda item: item[1]['properties']['awardedCount'], reverse=True))
+                        new_obj[new_key][subcategory] = sorted_scorestreaks
+
                 # Sort Accolades in descending order
                 if new_key == "Accolades":
                     sorted_accolades = dict(sorted(new_obj[new_key]['properties'].items(), key=lambda item: item[1], reverse=True))
                     new_obj[new_key]['properties'] = sorted_accolades
-                    
+
             return new_obj
         elif isinstance(obj, list):
             for index, value in enumerate(obj):
@@ -274,4 +295,4 @@ if __name__ == "__main__":
     file_path = "stats.json"
 
     replace_and_sort_keys_in_json(file_path, replacements)
-    print(f"Keys replaced and accolades sorted in {file_path}!")
+    print(f"Keys sorted and replaced in {file_path}!")
