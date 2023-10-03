@@ -21,6 +21,7 @@ Gathering Detailed Stats
 - Replace the `PROF` variable with your profile's Activision ID in the following format - `PlayerName%0000000`
   * *The `%` replaces the `#` in the usual Activision ID*
 - Once stats are downloaded, run `beautify_json.py` to beautify the JSON output and then `beautify_data.py` to sort and replace the JSON keys into a human readable string
+  > If you don't have Python installed, you can run the executable versions of the scripts `beautify_json.exe` and `beautify_data.exe`
 
 Sorting
 -------------
