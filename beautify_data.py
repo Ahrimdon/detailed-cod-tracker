@@ -1,7 +1,7 @@
 import json
 
-def replace_keys_in_json(file_path, replacements):
-    """Replace keys in the JSON file based on the replacements dictionary."""
+def replace_and_sort_keys_in_json(file_path, replacements):
+    """Replace keys in the JSON file based on the replacements dictionary and sort Accolades."""
 
     with open(file_path, 'r') as file:
         data = json.load(file)
@@ -12,6 +12,12 @@ def replace_keys_in_json(file_path, replacements):
             for key, value in obj.items():
                 new_key = replacements.get(key, key)
                 new_obj[new_key] = recursive_key_replace(value, replacements)
+                
+                # Sort Accolades in descending order
+                if new_key == "Accolades":
+                    sorted_accolades = dict(sorted(new_obj[new_key]['properties'].items(), key=lambda item: item[1], reverse=True))
+                    new_obj[new_key]['properties'] = sorted_accolades
+                    
             return new_obj
         elif isinstance(obj, list):
             for index, value in enumerate(obj):
@@ -195,37 +201,77 @@ if __name__ == "__main__":
         "directional_uav": "Advanced UAV",
         # Accolades
         "accoladeData": "Accolades",
-        "classChanges": "Most Classes Changed (Evolver)",
-        "highestAvgAltitude": "Highest Average Altitude (High Command)",
-        "killsFromBehind": "Most Kills from Behind (Flanker)",
-        "lmgDeaths": "Most LMG Deaths (Target Practice)",
-        "riotShieldDamageAbsorbed": "Most Damage Absorbed with Riot Shield (Guardian)",
-        "flashbangHits": "Most Flashbang Hits (Blinder)",
-        "meleeKills": "Most Melee Kills (Brawler)",
-        "tagsLargestBank": "Largest Bank (Bank Account)",
-        "shotgunKills": "Most Shotgun Kills (Buckshot)",
-        "sniperDeaths": "Most Sniper Deaths (Zeroed In)",
-        "timeProne": "Most Time Spent Prone (Grassy Knoll)",
-        "killstreakWhitePhosphorousKillsAssists": "Most Kills and Assists with White Phosphorus (Burnout)",
-        "shortestLife": "Shortest Life (Terminal)",
-        "deathsFromBehind": "Most Deaths from Behind (Blindsided)",
-        "higherRankedKills": "Most Kills on Higher Ranked Scoreboard Players (Upriser)",
-        "mostAssists": "Most Assists (Wingman)",
-        "leastKills": "Fewest Kills (The Fearful)",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": ""
+        "classChanges": "Most classes changed (Evolver)",
+        "highestAvgAltitude": "Highest average altitude (High Command)",
+        "killsFromBehind": "Most kills from behind (Flanker)",
+        "lmgDeaths": "Most LMG deaths (Target Practice)",
+        "riotShieldDamageAbsorbed": "Most damage absorbed with Riot Shield (Guardian)",
+        "flashbangHits": "Most Flashbang hits (Blinder)",
+        "meleeKills": "Most Melee kills (Brawler)",
+        "tagsLargestBank": "Largest bank (Bank Account)",
+        "shotgunKills": "Most Shotgun kills (Buckshot)",
+        "sniperDeaths": "Most Sniper deaths (Zeroed In)",
+        "timeProne": "Most time spent Prone (Grassy Knoll)",
+        "killstreakWhitePhosphorousKillsAssists": "Most kills and assists with White Phosphorus (Burnout)",
+        "shortestLife": "Shortest life (Terminal)",
+        "deathsFromBehind": "Most deaths from behind (Blindsided)",
+        "higherRankedKills": "Most kills on higher ranked scoreboard players (Upriser)",
+        "mostAssists": "Most assists (Wingman)",
+        "leastKills": "Fewest kills (The Fearful)",
+        "tagsDenied": "Denied the most tags (Denied)",
+        "killstreakWheelsonKills": "Most Wheelson kills",
+        "sniperHeadshots": "Most Sniper headshots (Dead Aim)",
+        "killstreakJuggernautKills": "Most Juggernaut kills (Heavy Metal)",
+        "smokesUsed": "Most Smoke Grenades used (Chimney)",
+        "avengerKills": "Most avenger kills (Avenger)",
+        "decoyHits": "Most Decoy Grenade hits (Made You Look)",
+        "killstreakCarePackageUsed": "Most Care Packages called in (Helping Hand)",
+        "molotovKills": "Most Molotov kills (Arsonist)",
+        "gasHits": "Most Gas Grenade hits (Gaseous)",
+        "comebackKills": "Most comebacks (Rally)",
+        "lmgHeadshots": "Most LMG headshots (LMG Expert)",
+        "smgDeaths": "Most SMG deaths (Run and Gunned)",
+        "carrierKills": "Most kills as carrier (Carrier)",
+        "deployableCoverUsed": "Most Deployable Covers used (Combat Engineer)",
+        "thermiteKills": "Most Thermite kills (Red Iron)",
+        "arKills": "Most assault rifle kills (AR Specialist)",
+        "c4Kills": "Most C4 kills (Handle With Care)",
+        "suicides": "Most suicides (Accident Prone)",
+        "clutch": "Most kills as the last alive (Clutched)",
+        "survivorKills": "Most kills as survivor (Survivalist)",
+        "killstreakGunshipKills": "Most Gunship kills (Death From Above)",
+        "timeSpentAsPassenger": "Most time spent as a passenger (Navigator)",
+        "returns": "Most flags returned (Flag Returner)",
+        "smgHeadshots": "Most SMG headshots (SMG Expert)",
+        "launcherDeaths": "Most launcher deaths (Fubar)",
+        "oneShotOneKills": "Most one shot kills (One Shot Kill)",
+        "ammoBoxUsed": "Most Munitions Boxes used (Provider)",
+        #"spawnSelectSquad": "",
+        "weaponPickups": "Most picked up weapons (Loaner)",
+        "pointBlankKills": "Most point blank kills (Personal Space)",
+        "tagsCaptured": "Collected the most tags (Confirmed Kills)",
+        "killstreakGroundKills": "Most ground based killstreak kills (Ground Control)",
+        "distanceTraveledInVehicle": "Longest distance travelled in a vehicle (Cross Country)",
+        "longestLife": "Longest life (Lifer)",
+        "stunHits": "Most Stun Grenade hits (Stunner)",
+        "spawnSelectFlag": "Most FOB Spawns (Objective Focused)", # Unsure
+        "shotgunHeadshots": "Most Shotgun headshots (Boomstick)",
+        "bombDefused": "Most defuses (Defuser)",
+        "snapshotHits": "Most Snapshot Grenade hits (Photographer)",
+        "noKillsWithDeath": "No kills with at least 1 death (Participant)",
+        "killstreakAUAVAssists": "Most Advanced UAV assists (Target Rich Environment)",
+        "killstreakPersonalUAVKills": "Most kills with a Personal Radar active (Nothing Personal)",
+        "tacticalInsertionSpawns": "Most Tactical Insertions used (Revenant)",
+        "launcherKills": "Most Launcher kills (Explosive)",
+        "spawnSelectVehicle": "Most vehicle spawns (Oscar Mike)",
+        "mostKillsLeastDeaths": "Most kills and fewest deaths (MVP)",
+        "mostKills": "Most kills (The Feared)",
+        "defends": "Most defend kills (Defense)",
+        "timeSpentAsDriver": "Most time spent driving (Driver)",
+        "": "" # WIP - Still adding more
     }
 
     file_path = "stats.json"
 
-    replace_keys_in_json(file_path, replacements)
-    print(f"Keys replaced in {file_path}!")
+    replace_and_sort_keys_in_json(file_path, replacements)
+    print(f"Keys replaced and accolades sorted in {file_path}!")
