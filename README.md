@@ -13,6 +13,7 @@ Prerequisites
 - Call of Duty Account
 - Battle.NET Account (PC Only for now)
 - Account API security settings set to open
+- [Curl](https://curl.se/download.html) ***(Installed by default on Windows)***
 
 Gathering Detailed Stats
 -------------
