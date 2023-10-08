@@ -11,9 +11,21 @@ Prerequisites
 - `Python 3.x` *(optional)*
 - A Web Browser *(Tested with Chromium)*
 - Call of Duty Account
-- Battle.NET Account (PC Only for now)
 - Account API security settings set to open
-- [Curl](https://curl.se/download.html) ***(Installed by default on Windows)***
+- ~~[Curl](https://curl.se/download.html) ***(Installed by default on Windows)***~~
+
+Command Line Arguments
+-----
+```
+usage: get_cod_stats.py [-h] [--replace-data] [--replace-match-data] [--player-name PLAYER_NAME]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --replace-data        Beautify the data in stats.json
+  --replace-match-data  Beautify the match data in match_info.json
+  --player-name PLAYER_NAME
+                        Player's username (with #1234567)
+```
 
 Gathering Detailed Stats
 -------------
