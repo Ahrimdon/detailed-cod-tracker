@@ -2,6 +2,11 @@ import json
 import os
 import argparse
 from cod_api import API, platforms
+import asyncio
+
+# Prevent Async error from showing
+if os.name == 'nt':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 replacements = {
     # Gamemodes
@@ -247,7 +252,12 @@ replacements = {
 api = API()
 COOKIE_FILE = 'cookie.txt'
 
-def get_and_save_data():
+def get_and_save_data(player_name=None):
+    # Create the stats directory if it doesn't exist
+    DIR_NAME = 'stats'
+    if not os.path.exists(DIR_NAME):
+        os.makedirs(DIR_NAME)
+    
     # Check if cookie file exists
     if os.path.exists(COOKIE_FILE):
         with open(COOKIE_FILE, 'r') as f:
@@ -257,8 +267,9 @@ def get_and_save_data():
         with open(COOKIE_FILE, 'w') as f:
             f.write(api_key)
 
-    # Get player name from user
-    player_name = input("Please enter the player's username (with #1234567): ")
+    # If player_name is not provided via command line, get it from user input
+    if not player_name:
+        player_name = input("Please enter the player's username (with #1234567): ")
 
     # Login with sso token
     api.login(api_key)
@@ -270,16 +281,16 @@ def get_and_save_data():
     map_list = api.ModernWarfare.mapList(platforms.Activision)
     identities = api.Me.loggedInIdentities()
 
-    # Save results to a JSON file
-    with open('stats.json', 'w') as json_file:
+    # Save results to a JSON file inside the stats directory
+    with open(os.path.join(DIR_NAME, 'stats.json'), 'w') as json_file:
         json.dump(player_stats, json_file, indent=4)
-    with open('match_info.json', 'w') as json_file:
+    with open(os.path.join(DIR_NAME, 'match_info.json'), 'w') as json_file:
         json.dump(match_info, json_file, indent=4)
-    with open('season_loot.json', 'w') as json_file:
+    with open(os.path.join(DIR_NAME, 'season_loot.json'), 'w') as json_file:
         json.dump(season_loot, json_file, indent=4)
-    with open('map_list.json', 'w') as json_file:
+    with open(os.path.join(DIR_NAME, 'map_list.json'), 'w') as json_file:
         json.dump(map_list, json_file, indent=4)
-    with open('identities.json', 'w') as json_file:
+    with open(os.path.join(DIR_NAME, 'identities.json'), 'w') as json_file:
         json.dump(identities, json_file, indent=4)
 
 def recursive_key_replace(obj, replacements):
@@ -354,6 +365,7 @@ def main():
     # Add arguments for your commands
     parser.add_argument("--replace-data", action="store_true", help="Beautify the data in stats.json")
     parser.add_argument("--replace-match-data", action="store_true", help="Beautify the match data in match_info.json")
+    parser.add_argument("--player-name", type=str, help="Player's username (with #1234567)")
 
     args = parser.parse_args()
 
@@ -362,7 +374,7 @@ def main():
     elif args.replace_match_data:
         beautify_match_data()
     else:
-        get_and_save_data()
+        get_and_save_data(args.player_name)
 
 if __name__ == "__main__":
     main()

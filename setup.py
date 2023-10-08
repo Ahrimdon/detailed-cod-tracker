@@ -15,7 +15,7 @@ def create_venv():
         f.write("venv\\Scripts\\activate")
 
 def upgrade_pip():
-    subprocess.check_call([os.path.join('venv', 'Scripts', 'python'), '-m', 'pip', 'install', '--upgrade', 'pip'])
+    subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'install', '--no-index', '--find-links=deps', 'pip'])
 
 def install_wheel():
     subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'install', '--no-index', '--find-links=deps', 'wheel'])
@@ -23,7 +23,11 @@ def install_wheel():
 def install_requirements_in_venv():
     # Use the full path to the wheel file
     wheel_path = os.path.join('src', 'cod_api-2.0.1-py3-none-any.whl')
-    subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'install', '--no-index', '--find-links=deps', wheel_path]) 
+    subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'install', '--no-index', '--find-links=deps', wheel_path])
+    
+def install_build_dependencies():
+    subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'install', '--no-index', '--find-links=deps', 'pyinstaller'])
+    subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'uninstall', 'enum34', '-y'])
 
 if __name__ == "__main__":
     if not deps_exists():
@@ -38,4 +42,6 @@ if __name__ == "__main__":
     install_wheel()
     print("Installing packages in the virtual environment...")
     install_requirements_in_venv()  # Call the function to install the requirements
+    print("Installing build dependencies...")
+    install_build_dependencies()
     print("Setup complete.")
