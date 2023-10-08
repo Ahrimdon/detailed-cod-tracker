@@ -1,0 +1,31 @@
+{
+    "status": "success",
+    "data": {
+        "titleIdentities": [
+            {
+                "title": "mw",
+                "platform": "xbl",
+                "username": "Ahrimdon",
+                "activeDate": 1623655418000,
+                "activityType": "mp",
+                "id": null
+            },
+            {
+                "title": "mw",
+                "platform": "battle",
+                "username": "Ahrimdon#1597",
+                "activeDate": 1696755151000,
+                "activityType": "mp",
+                "id": null
+            },
+            {
+                "title": "vg",
+                "platform": "battle",
+                "username": "Ahrimdon#1597",
+                "activeDate": 1637415762000,
+                "activityType": "mp",
+                "id": null
+            }
+        ]
+    }
+}

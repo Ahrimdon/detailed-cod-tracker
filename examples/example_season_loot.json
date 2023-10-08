@@ -1,0 +1,105 @@
+{
+    "status": "success",
+    "data": {
+        "streams": {
+            "loot_season_3": {
+                "name": "loot_season_3",
+                "categoryNameLabel": "Season 3",
+                "categoryTitleLabel": "Season 3",
+                "tier": 100,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-3",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": true
+            },
+            "loot_season_4": {
+                "name": "loot_season_4",
+                "categoryNameLabel": "Season 4",
+                "categoryTitleLabel": "Season 4",
+                "tier": 100,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-4",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": true
+            },
+            "loot_season_1": {
+                "name": "loot_season_1",
+                "categoryNameLabel": "Season 1",
+                "categoryTitleLabel": "Season 1",
+                "tier": 100,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-1",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": true
+            },
+            "loot_season_2": {
+                "name": "loot_season_2",
+                "categoryNameLabel": "Season 2",
+                "categoryTitleLabel": "Season 2",
+                "tier": 100,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-2",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": true
+            },
+            "loot_season_0": {
+                "name": "loot_season_0",
+                "categoryNameLabel": "Season 0",
+                "categoryTitleLabel": "Season 0",
+                "tier": 50,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-0",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": false
+            },
+            "loot_season_5": {
+                "name": "loot_season_5",
+                "categoryNameLabel": "Season 5",
+                "categoryTitleLabel": "Season 5",
+                "tier": 100,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-5",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": false
+            },
+            "loot_season_6": {
+                "name": "loot_season_6",
+                "categoryNameLabel": "Season 6",
+                "categoryTitleLabel": "Season 6",
+                "tier": 93,
+                "streamType": "season",
+                "rarity": null,
+                "lootType": null,
+                "seasonInfoUrlKey": "season-6",
+                "itemsObtained": null,
+                "premiumTokenOwnedNotRedeemed": false,
+                "tierSkipTokensUnredeemed": null,
+                "premium": true
+            }
+        }
+    }
+}
