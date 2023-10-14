@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 09:01:13 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 09:06:49 AM",
     "map": "mp_m_stadium",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "16756300293244951150",
     "duration": "5 Minutes 36 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,29 @@
     "team1Score": 6,
     "team2Score": 2,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 109424.0,
+            "one_shot_kill": 268624.0,
+            "mode_x_last_alive": 312608.0,
+            "mode_x_eliminate": 312656.0,
+            "pointblank": 268720.0,
+            "headshot": 262800.0,
+            "match_complete": 155744.0,
+            "firstblood": 262656.0,
+            "match_complete_win": 314896.0,
+            "streak_5": 268768.0,
+            "first_place_kill": 312560.0,
+            "longshot": 262800.0
+        },
+        "mostKilled": "TIGER KING",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 10.0,
         "medalXp": 2565.0,
@@ -46,7 +69,7 @@
         "damageTaken": 390.0
     },
     "weaponStats": {
-        "Renetti": {
+        "iw8_pi_mike9": {
             "hits": 9.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -56,7 +79,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +89,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "MG34": {
+        "iw8_lm_mgolf34": {
             "hits": 6.0,
             "kills": 2.0,
             "headshots": 2.0,
@@ -76,7 +99,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "ISO": {
+        "iw8_sm_charlie9": {
             "hits": 11.0,
             "kills": 1.0,
             "headshots": 1.0,
@@ -86,7 +109,7 @@
             "deaths": 0.0,
             "xpEarned": 270.0
         },
-        "Origin 12 Shotgun": {
+        "iw8_sh_oscar12": {
             "hits": 2.0,
             "kills": 2.0,
             "headshots": 1.0,
@@ -98,6 +121,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

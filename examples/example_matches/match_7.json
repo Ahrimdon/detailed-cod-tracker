@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:24:20 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:30:11 AM",
     "map": "mp_m_pine",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "15185728700852222154",
     "duration": "5 Minutes 51 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,28 @@
     "team1Score": 3,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 324704.0,
+            "slide_kill": 167248.0,
+            "mode_x_last_alive": 324656.0,
+            "mode_x_eliminate": 324752.0,
+            "headshot": 270432.0,
+            "match_complete": 243376.0,
+            "firstblood": 189184.0,
+            "match_complete_win": 326944.0,
+            "avenger": 236640.0,
+            "first_place_kill": 324752.0,
+            "longshot": 324608.0
+        },
+        "mostKilled": "RSTER",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 9.0,
         "medalXp": 2505.0,
@@ -46,7 +68,7 @@
         "damageTaken": 732.0
     },
     "weaponStats": {
-        "Renetti": {
+        "iw8_pi_mike9": {
             "hits": 7.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -56,7 +78,7 @@
             "deaths": 1.0,
             "xpEarned": 360.0
         },
-        "M91": {
+        "iw8_lm_kilo121": {
             "hits": 3.0,
             "kills": 1.0,
             "headshots": 1.0,
@@ -66,7 +88,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        ".50 GS": {
+        "iw8_pi_decho": {
             "hits": 2.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -76,7 +98,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "Striker 45": {
+        "iw8_sm_smgolf45": {
             "hits": 4.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -86,7 +108,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "Model 680": {
+        "iw8_sh_romeo870": {
             "hits": 4.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -106,7 +128,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "Grau 5.56": {
+        "iw8_ar_sierra552": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -118,6 +140,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

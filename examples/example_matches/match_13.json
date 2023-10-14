@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 07:48:06 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 07:51:26 AM",
     "map": "mp_m_king",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "11409852559879680761",
     "duration": "3 Minutes 20 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,28 @@
     "team1Score": 1,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 68032.0,
+            "one_shot_kill": 12912.0,
+            "mode_x_last_alive": 17776.0,
+            "mode_x_eliminate": 120432.0,
+            "air_kill": 12960.0,
+            "headshot": 120480.0,
+            "firstblood": 67984.0,
+            "match_complete_win": 181920.0,
+            "avenger": 17824.0,
+            "first_place_kill": 120528.0,
+            "longshot": 17872.0
+        },
+        "mostKilled": "Clay_Doohh",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 4.0,
         "medalXp": 1380.0,
@@ -46,7 +68,7 @@
         "damageTaken": 241.0
     },
     "weaponStats": {
-        "FAL": {
+        "iw8_ar_falima": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -56,7 +78,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 2.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -66,7 +88,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -86,7 +108,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "PKM": {
+        "iw8_lm_pkilo": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -96,7 +118,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "Model 680": {
+        "iw8_sh_romeo870": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -108,6 +130,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

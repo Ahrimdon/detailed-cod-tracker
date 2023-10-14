@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:19:01 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:22:19 AM",
     "map": "mp_m_showers",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "12106462555916355611",
     "duration": "3 Minutes 18 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,24 @@
     "team1Score": 1,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "mode_x_last_alive": 145664.0,
+            "mode_x_eliminate": 166960.0,
+            "match_complete": 38272.0,
+            "match_complete_win": 179888.0,
+            "firstblood": 166912.0,
+            "avenger": 81264.0,
+            "first_place_kill": 167008.0
+        },
+        "mostKilled": "RSTER",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 7.0,
         "medalXp": 1895.0,
@@ -46,7 +64,7 @@
         "damageTaken": 300.0
     },
     "weaponStats": {
-        "M4A1": {
+        "iw8_ar_mike4": {
             "hits": 1.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -56,7 +74,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "Renetti": {
+        "iw8_pi_mike9": {
             "hits": 3.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +94,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -86,7 +104,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "Dragunov": {
+        "iw8_sn_delta": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -96,7 +114,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "Holger-26": {
+        "iw8_lm_mgolf36": {
             "hits": 4.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -108,6 +126,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

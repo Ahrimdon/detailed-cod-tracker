@@ -456,8 +456,12 @@ def split_matches_into_files():
     for idx, match in enumerate(matches):
         # Create a copy of the match to ensure we don't modify the original data
         match_copy = dict(match)
-        # Remove player subkey to avoid the cascading data, if you want to exclude more, add them here
-        match_copy.pop('player', None)
+        # Remove the 'loadouts' subkey from the 'player' key to avoid the cascading data
+        match_copy['player'].pop('loadouts', None)
+        match_copy['player'].pop('loadout', None)
+
+        # Remove the entire player subkey to avoid the cascading data, if you want to exclude more, add them here
+        # match_copy.pop('player', None)
 
         file_name = f"match_{idx + 1}.json"
         with open(os.path.join(MATCHES_DIR, file_name), 'w') as match_file:

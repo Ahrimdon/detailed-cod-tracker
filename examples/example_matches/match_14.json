@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 07:41:23 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 07:46:05 AM",
     "map": "mp_m_trench",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "14167686646012486282",
     "duration": "4 Minutes 42 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,27 @@
     "team1Score": 2,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 197744.0,
+            "one_shot_kill": 47184.0,
+            "mode_x_last_alive": 197696.0,
+            "mode_x_eliminate": 258576.0,
+            "headshot": 258624.0,
+            "match_complete": 88640.0,
+            "firstblood": 217968.0,
+            "match_complete_win": 260864.0,
+            "streak_5": 258672.0,
+            "first_place_kill": 258672.0
+        },
+        "mostKilled": "Clay_Doohh",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 9.0,
         "medalXp": 2220.0,
@@ -46,7 +67,7 @@
         "damageTaken": 353.0
     },
     "weaponStats": {
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 2.0,
             "kills": 1.0,
             "headshots": 1.0,
@@ -56,7 +77,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 1.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -66,7 +87,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "MP7": {
+        "iw8_sm_mpapa7": {
             "hits": 9.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +97,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "JAK-12": {
+        "iw8_sh_aalpha12": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -86,7 +107,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "Rytec AMR": {
+        "iw8_sn_xmike109": {
             "hits": 1.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -98,6 +119,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

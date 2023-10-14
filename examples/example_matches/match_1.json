@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 09:09:15 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 09:14:29 AM",
     "map": "mp_m_speedball",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "9418543359897068941",
     "duration": "5 Minutes 14 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,27 @@
     "team1Score": 3,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 160896.0,
+            "mode_x_last_alive": 112192.0,
+            "mode_x_eliminate": 160848.0,
+            "match_complete": 289424.0,
+            "firstblood": 160800.0,
+            "match_complete_win": 114480.0,
+            "streak_5": 112288.0,
+            "avenger": 30128.0,
+            "first_place_kill": 112240.0
+        },
+        "nemesis": "Maddan-78",
+        "mostKilled": "Diabl0",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 6.0,
         "medalXp": 2350.0,
@@ -46,7 +67,7 @@
         "damageTaken": 748.0
     },
     "weaponStats": {
-        "AS VAL": {
+        "iw8_ar_valpha": {
             "hits": 5.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -56,7 +77,7 @@
             "deaths": 2.0,
             "xpEarned": 180.0
         },
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +87,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "JAK-12": {
+        "iw8_sh_aalpha12": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -76,7 +97,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "M19": {
+        "iw8_pi_papa320": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -86,7 +107,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "Holger-26": {
+        "iw8_lm_mgolf36": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -96,7 +117,7 @@
             "deaths": 2.0,
             "xpEarned": 0.0
         },
-        "Uzi": {
+        "iw8_sm_uzulu": {
             "hits": 8.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -108,6 +129,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

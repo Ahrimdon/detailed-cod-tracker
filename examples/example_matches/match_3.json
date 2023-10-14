@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:54:51 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:59:00 AM",
     "map": "mp_m_fork",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "4426854641996609602",
     "duration": "4 Minutes 9 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,27 @@
     "team1Score": 6,
     "team2Score": 2,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 125760.0,
+            "mode_x_last_alive": 174992.0,
+            "mode_x_eliminate": 175040.0,
+            "headshot": 172288.0,
+            "match_complete": 227904.0,
+            "firstblood": 125616.0,
+            "match_complete_win": 177280.0,
+            "first_place_kill": 174944.0,
+            "longshot": 125712.0
+        },
+        "nemesis": "Jf_bassing",
+        "mostKilled": "Huevos104",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 5.0,
         "medalXp": 1635.0,
@@ -46,7 +67,7 @@
         "damageTaken": 688.0
     },
     "weaponStats": {
-        ".50 GS": {
+        "iw8_pi_decho": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -56,7 +77,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "FiNN LMG": {
+        "iw8_lm_sierrax": {
             "hits": 8.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -66,7 +87,7 @@
             "deaths": 1.0,
             "xpEarned": 180.0
         },
-        "EBR-14": {
+        "iw8_sn_mike14": {
             "hits": 7.0,
             "kills": 3.0,
             "headshots": 1.0,
@@ -76,7 +97,7 @@
             "deaths": 1.0,
             "xpEarned": 540.0
         },
-        "FN Scar 17": {
+        "iw8_ar_scharlie": {
             "hits": 2.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -88,6 +109,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

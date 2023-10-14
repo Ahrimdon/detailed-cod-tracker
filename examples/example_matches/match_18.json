@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 07:17:06 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 07:19:53 AM",
     "map": "mp_m_cage",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "3236775995900435719",
     "duration": "2 Minutes 47 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,22 @@
     "team1Score": 1,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "mode_x_eliminate": 7392.0,
+            "match_complete": 128592.0,
+            "match_complete_win": 9776.0,
+            "save_teammate": 7344.0
+        },
+        "nemesis": "Slayer",
+        "mostKilled": "Slayer",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 1.0,
         "medalXp": 1510.0,
@@ -46,7 +62,7 @@
         "damageTaken": 600.0
     },
     "weaponStats": {
-        ".357": {
+        "iw8_pi_cpapa": {
             "hits": 2.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -56,7 +72,7 @@
             "deaths": 2.0,
             "xpEarned": 0.0
         },
-        "MP5": {
+        "iw8_sm_mpapa5": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +82,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "R9-0 Shotgun": {
+        "iw8_sh_dpapa12": {
             "hits": 3.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +92,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "Grau 5.56": {
+        "iw8_ar_sierra552": {
             "hits": 3.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -88,6 +104,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

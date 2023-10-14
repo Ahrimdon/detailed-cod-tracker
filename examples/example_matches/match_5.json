@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:38:24 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:43:46 AM",
     "map": "mp_m_train",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "5904974789808129470",
     "duration": "5 Minutes 22 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,27 @@
     "team1Score": 4,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 227232.0,
+            "one_shot_kill": 148144.0,
+            "mode_x_last_alive": 122784.0,
+            "mode_x_eliminate": 227136.0,
+            "pointblank": 227184.0,
+            "match_complete": 297216.0,
+            "firstblood": 227088.0,
+            "match_complete_win": 150432.0,
+            "first_place_kill": 148192.0
+        },
+        "nemesis": "Mr_Phillycheeze",
+        "mostKilled": "Mr_Phillycheeze",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 5.0,
         "medalXp": 2390.0,
@@ -46,7 +67,7 @@
         "damageTaken": 791.0
     },
     "weaponStats": {
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 3.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -56,7 +77,7 @@
             "deaths": 1.0,
             "xpEarned": 135.0
         },
-        "SA87": {
+        "iw8_lm_lima86": {
             "hits": 2.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +87,7 @@
             "deaths": 1.0,
             "xpEarned": 90.0
         },
-        "MP5": {
+        "iw8_sm_mpapa5": {
             "hits": 7.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +97,7 @@
             "deaths": 2.0,
             "xpEarned": 180.0
         },
-        "M19": {
+        "iw8_pi_papa320": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -86,7 +107,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "Origin 12 Shotgun": {
+        "iw8_sh_oscar12": {
             "hits": 3.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -96,7 +117,7 @@
             "deaths": 2.0,
             "xpEarned": 0.0
         },
-        "Rytec AMR": {
+        "iw8_sn_xmike109": {
             "hits": 1.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -108,6 +129,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

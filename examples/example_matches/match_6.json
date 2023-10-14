@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:32:14 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:35:12 AM",
     "map": "mp_m_trench",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "6975546085129714208",
     "duration": "2 Minutes 58 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,24 @@
     "team1Score": 6,
     "team2Score": 0,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "mode_x_eliminate": 123712.0,
+            "headshot": 123760.0,
+            "match_complete": 163920.0,
+            "firstblood": 123664.0,
+            "first_place_kill": 45088.0,
+            "longshot": 45088.0
+        },
+        "nemesis": "Mr_Phillycheeze",
+        "mostKilled": "oobagweJ",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 2.0,
         "medalXp": 1590.0,
@@ -46,7 +64,7 @@
         "damageTaken": 600.0
     },
     "weaponStats": {
-        "Bruen Mk9": {
+        "iw8_lm_mkilo3": {
             "hits": 5.0,
             "kills": 1.0,
             "headshots": 1.0,
@@ -56,7 +74,7 @@
             "deaths": 2.0,
             "xpEarned": 180.0
         },
-        "VLK Rogue": {
+        "iw8_sh_mike26": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +84,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "M13": {
+        "iw8_ar_mcharlie": {
             "hits": 6.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -76,7 +94,7 @@
             "deaths": 2.0,
             "xpEarned": 0.0
         },
-        "M19": {
+        "iw8_pi_papa320": {
             "hits": 5.0,
             "kills": 1.0,
             "headshots": 1.0,
@@ -88,6 +106,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

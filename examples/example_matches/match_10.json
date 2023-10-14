@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:06:34 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:11:52 AM",
     "map": "mp_m_hill",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "17778358267058167779",
     "duration": "5 Minutes 18 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,30 @@
     "team1Score": 2,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "mode_x_eliminate": 271792.0,
+            "stunned_kill": 74576.0,
+            "pointblank": 221984.0,
+            "match_complete_win": 297328.0,
+            "streak_5": 174576.0,
+            "avenger": 46848.0,
+            "save_teammate": 271888.0,
+            "mode_x_last_alive": 48816.0,
+            "headshot": 271840.0,
+            "match_complete": 254880.0,
+            "firstblood": 271744.0,
+            "first_place_kill": 271888.0,
+            "longshot": 127376.0
+        },
+        "mostKilled": "Jeffrey Epstein",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 9.0,
         "medalXp": 2470.0,
@@ -56,7 +80,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "FR 5.56": {
+        "iw8_ar_falpha": {
             "hits": 9.0,
             "kills": 3.0,
             "headshots": 0.0,
@@ -66,7 +90,7 @@
             "deaths": 1.0,
             "xpEarned": 540.0
         },
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 2.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +100,7 @@
             "deaths": 0.0,
             "xpEarned": 270.0
         },
-        ".50 GS": {
+        "iw8_pi_decho": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -86,7 +110,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "Origin 12 Shotgun": {
+        "iw8_sh_oscar12": {
             "hits": 4.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -96,7 +120,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "Fennec": {
+        "iw8_sm_victor": {
             "hits": 4.0,
             "kills": 1.0,
             "headshots": 1.0,
@@ -118,6 +142,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

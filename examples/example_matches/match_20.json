@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 07:00:36 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 07:07:41 AM",
     "map": "mp_m_hill",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "1031183506930466944",
     "duration": "7 Minutes 5 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,25 @@
     "team1Score": 6,
     "team2Score": 4,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 411584.0,
+            "mode_x_eliminate": 411632.0,
+            "headshot": 351616.0,
+            "match_complete": 322512.0,
+            "firstblood": 409616.0,
+            "match_complete_win": 413920.0,
+            "first_place_kill": 409712.0,
+            "save_teammate": 216016.0
+        },
+        "mostKilled": "Toman34",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 6.0,
         "medalXp": 1915.0,
@@ -46,7 +65,7 @@
         "damageTaken": 481.0
     },
     "weaponStats": {
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -56,7 +75,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "FR 5.56": {
+        "iw8_ar_falpha": {
             "hits": 3.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +85,7 @@
             "deaths": 1.0,
             "xpEarned": 45.0
         },
-        "Crossbow": {
+        "iw8_sn_crossbow": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -76,7 +95,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "MG34": {
+        "iw8_lm_mgolf34": {
             "hits": 8.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -86,7 +105,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "P90": {
+        "iw8_sm_papa90": {
             "hits": 10.0,
             "kills": 2.0,
             "headshots": 2.0,
@@ -98,6 +117,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

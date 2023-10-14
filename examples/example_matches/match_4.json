@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:46:06 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:52:45 AM",
     "map": "mp_m_overunder",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "13122840687922000264",
     "duration": "6 Minutes 39 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,29 @@
     "team1Score": 6,
     "team2Score": 4,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 23280.0,
+            "one_shot_kill": 359072.0,
+            "mode_x_last_alive": 33072.0,
+            "mode_x_eliminate": 359024.0,
+            "stunned_kill": 54160.0,
+            "pointblank": 122192.0,
+            "headshot": 239712.0,
+            "match_complete": 371104.0,
+            "firstblood": 358976.0,
+            "match_complete_win": 216784.0,
+            "first_place_kill": 239808.0,
+            "save_teammate": 54112.0
+        },
+        "mostKilled": "Jf_bassing",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 8.0,
         "medalXp": 2460.0,
@@ -46,7 +69,7 @@
         "damageTaken": 676.0
     },
     "weaponStats": {
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -56,7 +79,7 @@
             "deaths": 0.0,
             "xpEarned": 90.0
         },
-        "SP-R 208": {
+        "iw8_sn_romeo700": {
             "hits": 1.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -66,7 +89,7 @@
             "deaths": 2.0,
             "xpEarned": 180.0
         },
-        "M19": {
+        "iw8_pi_papa320": {
             "hits": 2.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +99,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "Holger-26": {
+        "iw8_lm_mgolf36": {
             "hits": 6.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -86,7 +109,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "PP19 Bizon": {
+        "iw8_sm_beta": {
             "hits": 4.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -96,7 +119,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "R9-0 Shotgun": {
+        "iw8_sh_dpapa12": {
             "hits": 1.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -118,6 +141,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 07:22:15 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 07:26:58 AM",
     "map": "mp_m_cargo",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "12407184959904712603",
     "duration": "4 Minutes 43 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,24 @@
     "team1Score": 2,
     "team2Score": 6,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 154144.0,
+            "mode_x_eliminate": 169056.0,
+            "match_complete": 207856.0,
+            "firstblood": 168784.0,
+            "match_complete_win": 171392.0,
+            "first_place_kill": 168880.0
+        },
+        "nemesis": "Ppepsuuiii",
+        "mostKilled": "Ppepsuuiii",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 5.0,
         "medalXp": 1340.0,
@@ -46,7 +64,7 @@
         "damageTaken": 698.0
     },
     "weaponStats": {
-        "M91": {
+        "iw8_lm_kilo121": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +84,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -76,7 +94,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "Striker 45": {
+        "iw8_sm_smgolf45": {
             "hits": 7.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -86,7 +104,7 @@
             "deaths": 1.0,
             "xpEarned": 360.0
         },
-        "Oden": {
+        "iw8_ar_asierra12": {
             "hits": 2.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -96,7 +114,7 @@
             "deaths": 2.0,
             "xpEarned": 180.0
         },
-        "R9-0 Shotgun": {
+        "iw8_sh_dpapa12": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -108,6 +126,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

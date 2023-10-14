@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 08:14:12 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 08:17:03 AM",
     "map": "mp_m_cage",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "14763503065632813798",
     "duration": "2 Minutes 51 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,28 @@
     "team1Score": 6,
     "team2Score": 1,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "allies",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 84048.0,
+            "one_shot_kill": 123008.0,
+            "slide_kill": 123104.0,
+            "mode_x_last_alive": 84000.0,
+            "mode_x_eliminate": 144736.0,
+            "pointblank": 56000.0,
+            "headshot": 120352.0,
+            "firstblood": 144688.0,
+            "match_complete_win": 153344.0,
+            "streak_5": 100720.0,
+            "first_place_kill": 144784.0
+        },
+        "mostKilled": "Angel 4hunnidd",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 9.0,
         "medalXp": 2035.0,
@@ -46,7 +68,7 @@
         "damageTaken": 459.0
     },
     "weaponStats": {
-        "1911": {
+        "iw8_pi_mike1911": {
             "hits": 5.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -56,7 +78,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "VLK Rogue": {
+        "iw8_sh_mike26": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -66,7 +88,7 @@
             "deaths": 0.0,
             "xpEarned": 45.0
         },
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 3.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -76,7 +98,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "AUG": {
+        "iw8_sm_augolf": {
             "hits": 6.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -86,7 +108,7 @@
             "deaths": 2.0,
             "xpEarned": 180.0
         },
-        "Kilo 141": {
+        "iw8_ar_kilo433": {
             "hits": 6.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -98,6 +120,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }

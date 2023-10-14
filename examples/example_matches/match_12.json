@@ -2,7 +2,7 @@
     "utcStartSeconds": "GMT: Friday, October 13, 2023 07:53:08 AM",
     "utcEndSeconds": "GMT: Friday, October 13, 2023 07:58:40 AM",
     "map": "mp_m_wallco2",
-    "mode": "Gunfight",
+    "mode": "arena",
     "matchID": "13011335364533875207",
     "duration": "5 Minutes 32 Seconds 0 Milliseconds",
     "playlistName": null,
@@ -14,6 +14,29 @@
     "team1Score": 6,
     "team2Score": 4,
     "isPresentAtEnd": true,
+    "player": {
+        "team": "axis",
+        "rank": 65.0,
+        "awards": {
+            "low_health_kill": 11696.0,
+            "slide_kill": 96160.0,
+            "one_shot_kill": 165728.0,
+            "mode_x_last_alive": 258976.0,
+            "mode_x_eliminate": 259072.0,
+            "pointblank": 258928.0,
+            "kill_jumper": 259024.0,
+            "match_complete": 278560.0,
+            "firstblood": 242400.0,
+            "match_complete_win": 261264.0,
+            "first_place_kill": 259072.0,
+            "longshot": 3264.0
+        },
+        "mostKilled": "Josh",
+        "username": "Ahrimdon",
+        "uno": "19568270",
+        "platform": "battlenet",
+        "killstreakUsage": {}
+    },
     "playerStats": {
         "kills": 9.0,
         "medalXp": 2175.0,
@@ -56,7 +79,7 @@
             "deaths": 0.0,
             "xpEarned": 0.0
         },
-        "X16": {
+        "iw8_pi_golf21": {
             "hits": 3.0,
             "kills": 1.0,
             "headshots": 0.0,
@@ -66,7 +89,7 @@
             "deaths": 0.0,
             "xpEarned": 180.0
         },
-        "725": {
+        "iw8_sh_charlie725": {
             "hits": 1.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -76,7 +99,7 @@
             "deaths": 1.0,
             "xpEarned": 0.0
         },
-        "PKM": {
+        "iw8_lm_pkilo": {
             "hits": 9.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -86,7 +109,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "ISO": {
+        "iw8_sm_charlie9": {
             "hits": 8.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -96,7 +119,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "HDR": {
+        "iw8_sn_hdromeo": {
             "hits": 2.0,
             "kills": 2.0,
             "headshots": 0.0,
@@ -106,7 +129,7 @@
             "deaths": 0.0,
             "xpEarned": 360.0
         },
-        "Grau 5.56": {
+        "iw8_ar_sierra552": {
             "hits": 0.0,
             "kills": 0.0,
             "headshots": 0.0,
@@ -118,6 +141,6 @@
         }
     },
     "allPlayers": null,
-    "Gunfight": false,
+    "arena": false,
     "privateMatch": false
 }
