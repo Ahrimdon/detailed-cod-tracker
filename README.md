@@ -1,8 +1,8 @@
 # Modern Warfare 2019 Detailed Statistic Tracker
 
-Tired of visiting [cod.tracker.gg](https://cod.tracker.gg/modern-warfare) to check your stats? With this repository, you'll never have to visit that site again.
+Tired of visiting [cod.tracker.gg](https://cod.tracker.gg/modern-warfare) to check your player stats? With this repository, you'll never have to visit that site again.
 
-Get every single statistic Call of Duty ***tracks*** in one place, under a minute!
+Get every single statistic Call of Duty <u>***tracks***</u> in one place, under a minute!
 
 > To see an example, look in `/examples/`
 
@@ -33,6 +33,11 @@ Get every single statistic Call of Duty ***tracks*** in one place, under a minut
 #### Using the Latest Release **(EASIEST)**
 - Navigate to the latest release and download `get_cod_stats.exe`
 - Open a command line of your choise, navigate to the directory using `cd` and follow examples below
+```
+cd "C:\Users\John\Desktop\detailed-cod-tracker"
+
+get_cod_stats.exe [-h] -p PLAYER_NAME [-a] [-sl] [-i] [-m] [-c] [-sm] [-csd] [-cmd]
+```
 
 #### Cloning the Repository
 - Download the ZIP archive or clone the repository `git clone https://github.com/Ahrimdon/detailed-cod-tracker.git && cd detailed-cod-tracker`
