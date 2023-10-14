@@ -3,3 +3,4 @@ uninstall.*
 venv.*
 /venv
 /HTML
+/legacy

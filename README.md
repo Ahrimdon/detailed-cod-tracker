@@ -35,7 +35,7 @@ Get every single statistic Call of Duty ***tracks*** in one place, under a minut
 - Open a command line of your choise, navigate to the directory using `cd` and follow examples below
 
 #### Cloning the Repository
-- Download the ZIP archive or clone the repository `git clone https://github.com/Ahrimdon/detailed-cod-tracker-stats.git && cd detailed-cod-tracker-stats`
+- Download the ZIP archive or clone the repository `git clone https://github.com/Ahrimdon/detailed-cod-tracker.git && cd detailed-cod-tracker`
 - Run the setup using the command `python setup.py`.
 
 ## Obtaining your ACT_SSO_COOKIE
