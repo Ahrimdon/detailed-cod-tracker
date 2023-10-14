@@ -46,6 +46,7 @@ get_cod_stats.exe [-h] -p PLAYER_NAME [-a] [-sl] [-i] [-m] [-c] [-sm] [-csd] [-c
 ## Obtaining your ACT_SSO_COOKIE
 - Go to https://www.callofduty.com and login with your account
 - Once logged in, press `F12` for your browsers developer tools. Then go to Application --> Storage --> Cookies
+  
   --> https://www.callofduty.com/ --> ACT_SSO_COOKIE
 - Enter the value when prompted
 
