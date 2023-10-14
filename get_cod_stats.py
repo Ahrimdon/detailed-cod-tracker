@@ -1,8 +1,10 @@
+import sys
 import json
 import os
 import argparse
 from cod_api import API, platforms
 import asyncio
+import datetime
 
 # Prevent Async error from showing
 if os.name == 'nt':
@@ -251,8 +253,15 @@ replacements = {
 # Initiating the API class
 api = API()
 COOKIE_FILE = 'cookie.txt'
+DIR_NAME = 'stats'
+MATCH_DIR_NAME = 'matches'
 
-def get_and_save_data(player_name=None):
+def save_to_file(data, filename, dir_name='stats'):
+    """Utility function to save data to a JSON file."""
+    with open(os.path.join(dir_name, filename), 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+
+def get_and_save_data(player_name=None, all_stats=False, season_loot=False, identities=False, maps=False):
     # Create the stats directory if it doesn't exist
     DIR_NAME = 'stats'
     if not os.path.exists(DIR_NAME):
@@ -273,26 +282,42 @@ def get_and_save_data(player_name=None):
 
     # Login with sso token
     api.login(api_key)
-
+    
     # Retrieve data from API
-    player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
-    match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
-    season_loot = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
-    map_list = api.ModernWarfare.mapList(platforms.Activision)
-    identities = api.Me.loggedInIdentities()
+    # First, determine if any specific optional arguments were given
+    if not (all_stats or season_loot or identities or maps):
+        # If no specific optional arguments are given, then default behavior:
+        player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
+        match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
+        save_to_file(player_stats, 'stats.json')
+        save_to_file(match_info, 'match_info.json')
+    elif all_stats:
+        # If the all_stats argument is given:
+        player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
+        match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
+        player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
+        match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
+        season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
+        map_list = api.ModernWarfare.mapList(platforms.Activision)
+        identities_data = api.Me.loggedInIdentities()
+        save_to_file(player_stats, 'stats.json')
+        save_to_file(match_info, 'match_info.json')
+        save_to_file(season_loot_data, 'season_loot.json')
+        save_to_file(map_list, 'map_list.json')
+        save_to_file(identities_data, 'identities.json')
+    else:
+        # For other specific optional arguments:
+        if season_loot:
+            season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
+            save_to_file(season_loot_data, 'season_loot.json')
+        if identities:
+            identities_data = api.Me.loggedInIdentities()
+            save_to_file(identities_data, 'identities.json')
+        if maps:
+            map_list = api.ModernWarfare.mapList(platforms.Activision)
+            save_to_file(map_list, 'map_list.json')
 
-    # Save results to a JSON file inside the stats directory
-    with open(os.path.join(DIR_NAME, 'stats.json'), 'w') as json_file:
-        json.dump(player_stats, json_file, indent=4)
-    with open(os.path.join(DIR_NAME, 'match_info.json'), 'w') as json_file:
-        json.dump(match_info, json_file, indent=4)
-    with open(os.path.join(DIR_NAME, 'season_loot.json'), 'w') as json_file:
-        json.dump(season_loot, json_file, indent=4)
-    with open(os.path.join(DIR_NAME, 'map_list.json'), 'w') as json_file:
-        json.dump(map_list, json_file, indent=4)
-    with open(os.path.join(DIR_NAME, 'identities.json'), 'w') as json_file:
-        json.dump(identities, json_file, indent=4)
-
+# Save results to a JSON file inside the stats directory
 def recursive_key_replace(obj, replacements):
     if isinstance(obj, dict):
         new_obj = {}
@@ -331,24 +356,114 @@ def sort_data(data):
                 data[key] = sort_data(value)
     return data
 
+def replace_time_and_duration_recursive(data):
+    """
+    Recursively replace epoch times for specific keys in a nested dictionary or list.
+    """
+    if isinstance(data, list):
+        for item in data:
+            replace_time_and_duration_recursive(item)
+
+    elif isinstance(data, dict):
+        for key, value in data.items():
+            if key == "utcStartSeconds":
+                data[key] = epoch_to_human_readable(value)
+                # For EST conversion: 
+                # data[key] = epoch_to_human_readable(value, "EST")
+                
+            elif key == "utcEndSeconds":
+                data[key] = epoch_to_human_readable(value)
+                # For EST conversion:
+                # data[key] = epoch_to_human_readable(value, "EST")
+                
+            elif key == "duration":
+                data[key] = convert_duration(value)
+            
+            else:
+                replace_time_and_duration_recursive(value)
+
+def epoch_to_human_readable(epoch_timestamp, timezone='GMT'):
+    if isinstance(epoch_timestamp, str):
+        return epoch_timestamp  # Already converted
+
+    dt_object = datetime.datetime.utcfromtimestamp(epoch_timestamp)
+    if timezone == 'GMT':
+        date_str = dt_object.strftime("GMT: %A, %B %d, %Y %I:%M:%S %p")
+    elif timezone == 'EST':
+        dt_object -= datetime.timedelta(hours=4)  # Using 4 hours for EST conversion instead of 5?
+        date_str = dt_object.strftime("EST: %A, %B %d, %Y %I:%M:%S %p")
+    else:
+        raise ValueError("Unsupported timezone.")
+    return date_str
+
+def convert_duration(milliseconds):
+    if isinstance(milliseconds, str) and "Minutes" in milliseconds:
+        return milliseconds  # Already converted
+    
+    seconds, milliseconds = divmod(milliseconds, 1000)
+    minutes, seconds = divmod(seconds, 60)
+    return f"{minutes} Minutes {seconds} Seconds {milliseconds} Milliseconds"
+
 def beautify_data():
-    file_path = "stats.json"
+    file_path = (os.path.join(DIR_NAME, 'stats.json'))
     with open(file_path, 'r') as file:
         data = json.load(file)
     data = recursive_key_replace(data, replacements)
     data = sort_data(data)
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
-    print(f"Keys sorted and replaced in {file_path}!")
+    print(f"Keys sorted and replaced in {file_path}.")
 
 def beautify_match_data():
-    file_path = "match_info.json"
+    file_path = (os.path.join(DIR_NAME, 'match_info.json'))
     with open(file_path, 'r') as file:
         data = json.load(file)
+    replace_time_and_duration_recursive(data)
     data = recursive_key_replace(data, replacements)
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
-    print(f"Keys replaced in {file_path}!")
+    print(f"Keys replaced in {file_path}.")
+
+def split_matches_into_files():
+    """
+    Split the matches in match_info.json into separate files.
+    """
+    MATCHES_DIR = os.path.join(DIR_NAME, MATCH_DIR_NAME)
+    
+    # Create matches directory if it doesn't exist
+    if not os.path.exists(MATCHES_DIR):
+        os.makedirs(MATCHES_DIR)
+
+    # Load the match_info data
+    with open(os.path.join(DIR_NAME, 'match_info.json'), 'r') as file:
+        data = json.load(file)
+        matches = data.get('data', {}).get('matches', [])  # Correct the key to access matches
+
+    # Check if data needs cleaning
+    sample_match = matches[0] if matches else {}
+    if (isinstance(sample_match.get("utcStartSeconds"), int) or 
+        isinstance(sample_match.get("utcEndSeconds"), int) or 
+        isinstance(sample_match.get("duration"), int)):
+        
+        print("Cleaning match data...")
+        replace_time_and_duration_recursive(data)
+        
+        # Save the cleaned data back to match_info.json
+        with open(os.path.join(DIR_NAME, 'match_info.json'), 'w') as file:
+            json.dump(data, file, indent=4)
+
+    # Split and save each match into a separate file
+    for idx, match in enumerate(matches):
+        # Create a copy of the match to ensure we don't modify the original data
+        match_copy = dict(match)
+        # Remove player subkey to avoid the cascading data, if you want to exclude more, add them here
+        match_copy.pop('player', None)
+
+        file_name = f"match_{idx + 1}.json"
+        with open(os.path.join(MATCHES_DIR, file_name), 'w') as match_file:
+            json.dump(match_copy, match_file, indent=4)
+
+    print(f"Matches split into {len(matches)} separate files in {MATCHES_DIR}.")
 
 def main():
     # Define the block of quote text to display in the help command
@@ -360,21 +475,48 @@ def main():
     - Enter the value when prompted
     """
 
-    parser = argparse.ArgumentParser(description="COD Data Tool", epilog=help_text, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(description="Detailed Modern Warfare (2019) Statistics Tool", epilog=help_text, formatter_class=argparse.RawDescriptionHelpFormatter)
 
-    # Add arguments for your commands
-    parser.add_argument("--replace-data", action="store_true", help="Beautify the data in stats.json")
-    parser.add_argument("--replace-match-data", action="store_true", help="Beautify the match data in match_info.json")
-    parser.add_argument("--player-name", type=str, help="Player's username (with #1234567)")
+    # Group related arguments
+    group_data = parser.add_argument_group("Data Fetching Options")
+    group_cleaning = parser.add_argument_group("Data Cleaning Options")
+
+    # Add arguments for Data Fetching Options
+    group_data.add_argument("-p", "--player_name", type=str, help="Player's username (with #1234567)")
+    group_data.add_argument("-a", "--all_stats", action="store_true", help="Fetch all the different types of stats data")
+    group_data.add_argument("-sl", "--season_loot", action="store_true", help="Fetch only the season loot data")
+    group_data.add_argument("-i", "--identities", action="store_true", help="Fetch only the logged-in identities data")
+    group_data.add_argument("-m", "--maps", action="store_true", help="Fetch only the map list data")
+
+    # Add arguments for Cleaning Options
+    group_cleaning.add_argument("-c", "--clean", action="store_true", help="Beautify all data")
+    group_cleaning.add_argument("-sm", "--split_matches", action="store_true", help="Split the matches into separate JSON files within the 'matches' subfolder")
+    group_cleaning.add_argument("-csd", "--clean_stats_data", action="store_true", help="Beautify the data and convert to human-readable strings in stats.json")
+    group_cleaning.add_argument("-cmd", "--clean_match_data", action="store_true", help="Beautify the match data and convert to human-readable strings in match_info.json")
 
     args = parser.parse_args()
 
-    if args.replace_data:
+    # Custom error handling
+    # try:
+    #     args = parser.parse_args()
+    # except SystemExit:
+    #     # Check if 'player_name' is in sys.argv, if not, raise exception
+    #     if '--player_name' not in sys.argv and '-p' not in sys.argv:
+    #         print('You must specify a player name!')
+    #     # Otherwise, re-raise the error or print the default error message.
+    #     sys.exit(1)
+
+    if args.split_matches:
+        split_matches_into_files()
+    elif args.clean_stats_data:
         beautify_data()
-    elif args.replace_match_data:
+    elif args.clean_match_data:
+        beautify_match_data()
+    elif args.clean:
+        beautify_data()
         beautify_match_data()
     else:
-        get_and_save_data(args.player_name)
+        get_and_save_data(args.player_name, args.all_stats, args.season_loot, args.identities, args.maps)
 
 if __name__ == "__main__":
     main()
