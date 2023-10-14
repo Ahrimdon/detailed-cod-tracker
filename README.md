@@ -4,11 +4,14 @@ Tired of visiting [cod.tracker.gg](https://cod.tracker.gg/modern-warfare) to che
 
 Get every single statistic Call of Duty ***tracks*** in one place, under a minute!
 
+> To see an example, look in `/examples/`
+
 ## Table of Contents
+  - [**Features**](#features)
   - [**Prerequisites**](#prerequisites)
+  - [**Installation**](#installation)
   - [**Obtaining your ACT\_SSO\_COOKIE**](#obtaining-your-act_sso_cookie)
   - [**Command Line Arguments**](#command-line-arguments)
-  - [**Examples**](#examples)
   - [**Sorting**](#sorting)
 
 ## Features
@@ -87,7 +90,7 @@ get_cod_stats.exe -sm
 ```
 get_cod_stats.exe -p Ahrimdon#1234567 -a
 ```
----
+
 > All data is saved to `/stats/`
 
 ## Sorting
@@ -97,5 +100,3 @@ get_cod_stats.exe -p Ahrimdon#1234567 -a
 * Lethal and Tactical equipment are sorted by *Uses* in descending order
 * Lethal and Support Scorestreaks by *Times Awarded* in descending order
 * Accolades sorted in descending order
-
-> To see an example, look in `/examples/`
