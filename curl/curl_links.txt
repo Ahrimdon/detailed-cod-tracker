@@ -14,3 +14,9 @@ https://my.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/ga
 
 # Get Maps & Game Modes (No $PROF Variable Needed)
 https://my.callofduty.com/api/papi-client/ce/v1/title/mw/platform/battle/gameType/mp/communityMapData/availability
+
+# Get Match Stats
+https://www.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/fullMatch/mp/matchID/it
+
+# Leaderboard
+https://www.callofduty.com/api/papi-client/leaderboards/v2/title/mw/platform/battle/time/alltime/type/core/mode/career/page/1
