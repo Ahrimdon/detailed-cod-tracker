@@ -482,13 +482,22 @@ def replace_time_and_duration_recursive(data):
     """
     Recursively replace epoch times for specific keys in a nested dictionary or list.
     """
+
+    time_keys = ["timePlayedTotal", "timePlayed", "objTime", "time", "timeProne", 
+                 "timeSpentAsPassenger", "timeSpentAsDriver", "timeOnPoint", 
+                 "timeWatchingKillcams", "timeCrouched", "timesSelectedAsSquadLeader", 
+                 "longestTimeSpentOnWeapon", "avgLifeTime", "percentTimeMoving"]
+
     if isinstance(data, list):
         for item in data:
             replace_time_and_duration_recursive(item)
 
     elif isinstance(data, dict):
         for key, value in data.items():
-            if key == "utcStartSeconds":
+            if key in time_keys:
+                data[key] = convert_duration_seconds(value)
+            
+            elif key == "utcStartSeconds":
                 data[key] = epoch_to_human_readable(value)
                 # For EST conversion: 
                 # data[key] = epoch_to_human_readable(value, "EST")
@@ -499,7 +508,7 @@ def replace_time_and_duration_recursive(data):
                 # data[key] = epoch_to_human_readable(value, "EST")
                 
             elif key == "duration":
-                data[key] = convert_duration(value)
+                data[key] = convert_duration_milliseconds(value)
             
             else:
                 replace_time_and_duration_recursive(value)
@@ -518,7 +527,7 @@ def epoch_to_human_readable(epoch_timestamp, timezone='GMT'):
         raise ValueError("Unsupported timezone.")
     return date_str
 
-def convert_duration(milliseconds):
+def convert_duration_milliseconds(milliseconds):
     if isinstance(milliseconds, str) and "Minutes" in milliseconds:
         return milliseconds  # Already converted
     
@@ -526,10 +535,30 @@ def convert_duration(milliseconds):
     minutes, seconds = divmod(seconds, 60)
     return f"{minutes} Minutes {seconds} Seconds {milliseconds} Milliseconds"
 
+def convert_duration_seconds(seconds):
+    """
+    Convert duration from seconds to a string format with days, minutes, seconds, and milliseconds.
+    """
+    if isinstance(seconds, str):
+        return seconds  # Already converted
+
+    days, seconds = divmod(seconds, 86400)
+    hours, seconds = divmod(seconds, 3600)
+    minutes, seconds = divmod(seconds, 60)
+
+    # Convert to integers to remove decimal places
+    days = int(days)
+    hours = int(hours)
+    minutes = int(minutes)
+    seconds = int(seconds)
+
+    return f"{days} Days {hours} Hours {minutes} Minutes {seconds} Seconds"
+
 def beautify_data():
     file_path = (os.path.join(DIR_NAME, 'stats.json'))
     with open(file_path, 'r') as file:
         data = json.load(file)
+    replace_time_and_duration_recursive(data)
     data = recursive_key_replace(data, replacements)
     data = sort_data(data)
     with open(file_path, 'w') as file:
