@@ -421,26 +421,11 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
         map_list = api.ModernWarfare.mapList(platforms.Activision)
         identities_data = api.Me.loggedInIdentities()
-
-        info = api.Me.info()
-        friendFeed = api.Me.friendFeed()
-        eventFeed = api.Me.eventFeed()
-        cp = cod_points = api.Me.codPoints()
-        connectedAccounts = api.Me.connectedAccounts()
-        settings = api.Me.settings()
-
         save_to_file(player_stats, 'stats.json')
         save_to_file(match_info, 'match_info.json')
         save_to_file(season_loot_data, 'season_loot.json')
         save_to_file(map_list, 'map_list.json')
         save_to_file(identities_data, 'identities.json')
-
-        save_to_file(info, 'info.json')
-        save_to_file(friendFeed, 'friendFeed.json')
-        save_to_file(eventFeed, 'eventFeed.json')
-        save_to_file(cp, 'cp.json')
-        save_to_file(connectedAccounts, 'connectedAccounts.json')
-        save_to_file(settings, 'settings.json')
     else:
         # For other specific optional arguments:
         if season_loot:
