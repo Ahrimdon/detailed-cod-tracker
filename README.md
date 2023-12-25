@@ -67,7 +67,7 @@ If done correctly, this should return the extra API information.
 
 ## Command Line Arguments
 ```
-usage: get_cod_stats.py [-h] -p PLAYER_NAME [-a] [-sl] [-i] [-m] [-c] [-sm] [-csd] [-cmd]
+usage: get_cod_stats.py [-h] [-p PLAYER_NAME] [-a] [-sl] [-id] [-m] [-i] [-f] [-e] [-cp] [-ca] [-s] [-c] [-sm] [-csd] [-cmd] [-cff] [-cef]
 
 Detailed Modern Warfare (2019) Statistics Tool
 
@@ -79,8 +79,15 @@ Data Fetching Options:
                         Player's username (with #1234567)
   -a, --all_stats       Fetch all the different types of stats data
   -sl, --season_loot    Fetch only the season loot data
-  -i, --identities      Fetch only the logged-in identities data
+  -id, --identities     Fetch only the logged-in identities data
   -m, --maps            Fetch only the map list data
+  -i, --info            Fetch only general information
+  -f, --friendFeed      Fetch only your friend feed
+  -e, --eventFeed       Fetch only your event feed
+  -cp, --cod_points     Fetch only your COD Point balance
+  -ca, --connected_accounts
+                        Fetch only the map list data
+  -s, --settings        Fetch only your account settings
 
 Data Cleaning Options:
   -c, --clean           Beautify all data
@@ -89,6 +96,10 @@ Data Cleaning Options:
                         Beautify the data and convert to human-readable strings in stats.json
   -cmd, --clean_match_data
                         Beautify the match data and convert to human-readable strings in match_info.json
+  -cff, --clean_friend_feed
+                        Clean the friend feed data
+  -cef, --clean_event_feed
+                        Clean the event feed data
 ```
 
 ## Command Examples
