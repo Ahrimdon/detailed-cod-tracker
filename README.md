@@ -50,6 +50,21 @@ get_cod_stats.exe [-h] -p PLAYER_NAME [-a] [-sl] [-i] [-m] [-c] [-sm] [-csd] [-c
   Cookies --> https://www.callofduty.com/ --> ACT_SSO_COOKIE
 - Enter the value when prompted
 
+## Obtaining your userInfo.json (Develop Branch ONLY)
+- For some reason, Activision broke the userInfo API URL which in turn, broke the API Wrapper's logic to obtain certain user information. Unfortunately, this also means we also cannot use Curl. Follow the steps below if you wish to obtain General Info, friendFeed, eventFeed, Cod Point Balance, Connected Accounts, and Account Settings.
+- This feature is only available on the `develop` branch.
+
+1. Clone the repository, `git clone https://github.com/Ahrimdon/detailed-cod-tracker.git && cd detailed-cod-tracker`
+2. Run the setup using `python setup.py`
+3. Switch to the `develop` branch using `git checkout develop`
+4. Obtain your [*ACT_SSO_COOKIE*](#obtaining-your-act_sso_cookie)
+5. Go to `https://profile.callofduty.com/cod/userInfo/{ACT_SSO_COOKIE}` and copy the contents into `userInfo.json` in the repo's directory
+    > *Note:* Create the `userInfo.json` file manually
+6. In the newly created `userInfo.json`, delete "*userInfo(*" and "*);*" at the beginning and end of the file. Alternatively, you can find and replace using the regular expression inside `clean_userInfo_regex.txt`
+7. Run `get_cod_stats.py` using the `-a` argument (e.g. `python get_cod_stats.py -p Ahrimdon -a`)
+
+If done correctly, this should return the extra API information.
+
 ## Command Line Arguments
 ```
 usage: get_cod_stats.py [-h] -p PLAYER_NAME [-a] [-sl] [-i] [-m] [-c] [-sm] [-csd] [-cmd]
