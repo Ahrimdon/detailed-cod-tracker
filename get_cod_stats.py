@@ -1,3 +1,4 @@
+import re
 import sys
 import json
 import os
@@ -37,11 +38,11 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         with open(COOKIE_FILE, 'w') as f:
             f.write(api_key)
 
-    # Check if userInfo.json exists, create it if it doesn't
+    # # Check if userInfo.json exists, create it if it doesn't
     USER_INFO_FILE = os.path.join('userInfo.json')
-    if not os.path.exists(USER_INFO_FILE):
-        with open(USER_INFO_FILE, 'w') as f:
-            pass  # Creates an empty file
+    # if not os.path.exists(USER_INFO_FILE):
+    #     with open(USER_INFO_FILE, 'w') as f:
+    #         pass  # Creates an empty file
 
     # If player_name is not provided via command line, get it from user input
     if not player_name:
@@ -58,33 +59,41 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
         save_to_file(player_stats, 'stats.json')
         save_to_file(match_info, 'match_info.json')
-    elif all_stats:
-        # If the all_stats argument is given:
-        player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
-        match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
-        season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
-        identities_data = api.Me.loggedInIdentities()
-        map_list = api.ModernWarfare.mapList(platforms.Activision)
-
-        info = api.Me.info()
-        friendFeed = api.Me.friendFeed()
-        eventFeed = api.Me.eventFeed()
-        cod_points = api.Me.codPoints()
-        connectedAccounts = api.Me.connectedAccounts()
-        settings = api.Me.settings()
-
-        save_to_file(player_stats, 'stats.json')
-        save_to_file(match_info, 'match_info.json')
-        save_to_file(season_loot_data, 'season_loot.json')
-        save_to_file(map_list, 'map_list.json')
-        save_to_file(identities_data, 'identities.json')
-
-        save_to_file(info, 'info.json')
-        save_to_file(friendFeed, 'friendFeed.json')
-        save_to_file(eventFeed, 'eventFeed.json')
-        save_to_file(cod_points, 'cp.json')
-        save_to_file(connectedAccounts, 'connectedAccounts.json')
-        save_to_file(settings, 'settings.json')
+    elif all_stats: #  If the all_stats argument is given:
+        if os.path.exists(USER_INFO_FILE): # Check if the userInfo.json file exists
+            player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
+            match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
+            season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
+            identities_data = api.Me.loggedInIdentities()
+            map_list = api.ModernWarfare.mapList(platforms.Activision)
+            info = api.Me.info()
+            friendFeed = api.Me.friendFeed()
+            eventFeed = api.Me.eventFeed()
+            cod_points = api.Me.codPoints()
+            connectedAccounts = api.Me.connectedAccounts()
+            settings = api.Me.settings()
+            save_to_file(player_stats, 'stats.json')
+            save_to_file(match_info, 'match_info.json')
+            save_to_file(season_loot_data, 'season_loot.json')
+            save_to_file(map_list, 'map_list.json')
+            save_to_file(identities_data, 'identities.json')
+            save_to_file(info, 'info.json')
+            save_to_file(friendFeed, 'friendFeed.json')
+            save_to_file(eventFeed, 'eventFeed.json')
+            save_to_file(cod_points, 'cp.json')
+            save_to_file(connectedAccounts, 'connectedAccounts.json')
+            save_to_file(settings, 'settings.json')
+        else:
+            player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
+            match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
+            season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
+            identities_data = api.Me.loggedInIdentities()
+            map_list = api.ModernWarfare.mapList(platforms.Activision)
+            save_to_file(player_stats, 'stats.json')
+            save_to_file(match_info, 'match_info.json')
+            save_to_file(season_loot_data, 'season_loot.json')
+            save_to_file(map_list, 'map_list.json')
+            save_to_file(identities_data, 'identities.json')
     else:
         # For other specific optional arguments:
         if season_loot:
@@ -132,6 +141,22 @@ def recursive_key_replace(obj):
         return [recursive_key_replace(item) for item in obj]
     else:
         return replacements.get(obj, obj) if isinstance(obj, str) else obj
+
+def clean_json_files(*filenames, dir_name='stats'):
+    regex_pattern = r'&lt;span class=&quot;|&lt;/span&gt;|&quot;&gt;|mp-stat-items|kills-value|headshots-value|username|game-mode|kdr-value'
+    replace = ''
+
+    for filename in filenames:
+        file_path = os.path.join(dir_name, filename)
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                content = file.read()
+            modified_content = re.sub(regex_pattern, replace, content)
+            with open(file_path, 'w') as file:
+                file.write(modified_content)
+            print(f"Cleaned {filename}.")
+        else:
+            print(f"{filename} does not exist, skipping.")
 
 def sort_data(data):
     if isinstance(data, dict):
@@ -331,6 +356,8 @@ def main():
     group_cleaning.add_argument("-sm", "--split_matches", action="store_true", help="Split the matches into separate JSON files within the 'matches' subfolder")
     group_cleaning.add_argument("-csd", "--clean_stats_data", action="store_true", help="Beautify the data and convert to human-readable strings in stats.json")
     group_cleaning.add_argument("-cmd", "--clean_match_data", action="store_true", help="Beautify the match data and convert to human-readable strings in match_info.json")
+    group_cleaning.add_argument("-cff", "--clean_friend_feed", action="store_true", help="Clean the friend feed data")
+    group_cleaning.add_argument("-cef", "--clean_event_feed", action="store_true", help="Clean the event feed data")
 
     args = parser.parse_args()
 
@@ -353,6 +380,11 @@ def main():
     elif args.clean:
         beautify_data()
         beautify_match_data()
+        clean_json_files('friendFeed.json', 'eventFeed.json')
+    elif args.clean_friend_feed:
+        clean_json_files('friendFeed.json')
+    elif args.clean_event_feed:
+        clean_json_files('eventFeed.json')
     else:
         get_and_save_data(args.player_name, args.all_stats, args.season_loot, args.identities, args.maps, args.info, args.friendFeed, args.eventFeed, args.cod_points, args.connected_accounts, args.settings)
 
