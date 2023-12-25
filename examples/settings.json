@@ -1,0 +1,36 @@
+{
+    "status": "success",
+    "data": {
+        "battle": {
+            "signon_visible": "friends",
+            "data_visible": "all",
+            "searchable": "all"
+        },
+        "xbl": {
+            "signon_visible": "friends",
+            "data_visible": "all",
+            "searchable": "all"
+        },
+        "uno": {
+            "push_gift_activity": "all",
+            "push_cod_updates": "all",
+            "push_intel_activity": "all",
+            "push_cod_events": "all",
+            "push_fav_signon": "all",
+            "push_ops_activity": "all",
+            "push_cod_news": "all",
+            "searchable": "all",
+            "signon_visible": "friends",
+            "push_intel_updates": "all",
+            "push_cwl_updates": "all",
+            "push_fav_activity": "all",
+            "push_ops_updates": "all",
+            "data_visible": "friends_tourneys"
+        },
+        "psn": {
+            "signon_visible": "friends",
+            "data_visible": "friends_tourneys",
+            "searchable": "all"
+        }
+    }
+}

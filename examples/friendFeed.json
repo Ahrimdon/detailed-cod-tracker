@@ -1,0 +1,326 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703499115338,
+            "category": "session_start",
+            "meta": {},
+            "rendered": "Ahrimdon started playing",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703398406507,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "kdr": 10.0
+                },
+                "map": "mp_m_showers",
+                "matchId": "6346764813811873465",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 10.00 K/D ratio in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703397057815,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "kdr": 3.25
+                },
+                "map": "mp_m_stadium",
+                "matchId": "1253304090523704633",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 3.25 K/D ratio in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703396034738,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "headshots": 5,
+                    "kdr": 5.0
+                },
+                "map": "mp_m_speedball",
+                "matchId": "16921360291940233410",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 5.00 K/D ratio and 5 headshots in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703310964439,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "koth_hc",
+                "stats": {
+                    "kills": 83,
+                    "headshots": 6
+                },
+                "map": "mp_m_speed",
+                "matchId": "4333210471980766910",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got 83 kills and 6 headshots in Hardpoint Hardcore",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703309848353,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "koth_hc",
+                "stats": {
+                    "kills": 93,
+                    "headshots": 9
+                },
+                "map": "mp_shipment",
+                "matchId": "53293821470583620",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got 93 kills and 9 headshots in Hardpoint Hardcore",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703231662091,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "kdr": 10.0
+                },
+                "map": "mp_m_showers",
+                "matchId": "1714429472903851618",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 10.00 K/D ratio in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1703231348675,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "kdr": 3.0
+                },
+                "map": "mp_m_stack",
+                "matchId": "17843164909224689417",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 3.00 K/D ratio in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1702446836018,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "koth_hc",
+                "stats": {
+                    "kills": 62
+                },
+                "map": "mp_shipment",
+                "matchId": "2643440332264386069",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got 62 kills in Hardpoint Hardcore",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1702446115555,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "koth_hc",
+                "stats": {
+                    "kills": 63,
+                    "headshots": 8
+                },
+                "map": "mp_m_speed",
+                "matchId": "6687312168970461455",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got 63 kills and 8 headshots in Hardpoint Hardcore",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1702441743189,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "kdr": 2.5
+                },
+                "map": "mp_m_hill",
+                "matchId": "3293821657448840747",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 2.50 K/D ratio in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1702360821785,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "koth_hc",
+                "stats": {
+                    "kills": 29
+                },
+                "map": "mp_m_speed",
+                "matchId": "16966673968984783119",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got 29 kills in Hardpoint Hardcore",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        },
+        {
+            "": "Ahrimdon",
+            "platform": "uno",
+            "title": "mw",
+            "date": 1702359430707,
+            "category": "mp_stat",
+            "meta": {
+                "mode": "arena",
+                "stats": {
+                    "kdr": 2.2
+                },
+                "map": "mp_m_trench",
+                "matchId": "7447697542955973023",
+                "platform": "battle"
+            },
+            "rendered": "Ahrimdon got a 2.20 K/D ratio in Gunfight",
+            "topFavorite": false,
+            "favorited": false,
+            "favoriteData": {},
+            "reactions": {
+                "userReaction": null,
+                "counts": {},
+                "updated": 0
+            }
+        }
+    ]
+}
