@@ -417,7 +417,6 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         # If the all_stats argument is given:
         player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
         match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
-        player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
         match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
         season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
         map_list = api.ModernWarfare.mapList(platforms.Activision)
