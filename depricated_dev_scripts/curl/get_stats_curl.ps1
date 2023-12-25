@@ -9,5 +9,3 @@ $USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHT
 $OUTPUT_FILE = "stats.json"
 
 curl -v $URL -H "Cookie: ACT_SSO_COOKIE=$COOKIE_VALUE" -H "User-Agent: $USER_AGENT" -o $OUTPUT_FILE
-
-# Replace

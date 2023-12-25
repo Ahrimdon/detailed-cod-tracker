@@ -7,20 +7,19 @@ https://my.callofduty.com/api/papi-client/stats/cod/v1/title/mw/platform/psn/gam
 # Get Stats Using Xbox Live
 https://my.callofduty.com/api/papi-client/stats/cod/v1/title/mw/platform/xbl/gamer/$PROF/profile/type/mp
 
----
-
 # Get Recent Games
 https://my.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/gamer/$PROF/matches/mp/start/0/end/0/details
 
 # Get Maps & Game Modes (No $PROF Variable Needed)
 https://my.callofduty.com/api/papi-client/ce/v1/title/mw/platform/battle/gameType/mp/communityMapData/availability
 
-
 # Get friendFeedEvents
 https://my.callofduty.com/api/papi-client/userfeed/v1/friendFeed/platform/battle/gamer/$PROF/friendFeedEvents/en
 
+# Get eventFeed
 https://my.callofduty.com/api/papi-client/userfeed/v1/friendFeed/rendered/en/{acct_sso_token}
 
+# Get CP
 https://my.callofduty.com/api/papi-client/inventory/v1/title/mw/platform/battle/gamer/$PROF/currency
 
 https://my.callofduty.com/api/papi-client/crm/cod/v2/accounts/platform/battle/gamer/$PROF/
