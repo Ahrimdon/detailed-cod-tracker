@@ -547,30 +547,28 @@ class API:
     class __USER(_Common):
         def info(self):
             if self.loggedIn:
-                # Assuming 'user_info.json' is the file you've downloaded with the information.
+                # Assuming 'user_info.json' is the file you've downloaded with the information
                 file_path = 'userInfo.json'
-                # Load the JSON content from the local file.
+                # Load the JSON content from the local file
                 with open(file_path, 'r') as file:
                     rawData = json.load(file)
-                    
                 try:
-                    userInfo = rawData['userInfo']  # Accessing the nested 'userInfo' dictionary.
-                    identities = rawData.get('identities', [])  # Accessing the 'identities' if it exists or default to empty list.
+                    userInfo = rawData['userInfo']  # Accessing the nested 'userInfo' dictionary
+                    identities = rawData.get('identities', [])  # Accessing the 'identities' if it exists or default to empty list
 
-                    data = {'userName': userInfo['userName'], 'identities': []}  # Getting 'userName' from the nested dictionary.
-                    for i in identities:  # Loop through each identity in the 'identities' list.
+                    data = {'userName': userInfo['userName'], 'identities': []}  # Getting 'userName' from the nested dictionary
+                    for i in identities:  # Loop through each identity in the 'identities' list
                         data['identities'].append({
                             'platform': i['provider'],
                             'gamertag': i['username'],
-                            'accountID': i['accountID']  # Assuming 'accountID' exists; otherwise, you might need a default value.
+                            'accountID': i['accountID']  # Assuming 'accountID' exists; otherwise, you might need a default value
                         })
-
                     return data
 
                 except KeyError as e:
-                    # Handle the case where the expected key is not found in the dictionary.
+                    # Handle the case where the expected key is not found in the dictionary
                     print(f"Error: A required field is missing in the data. Details: {str(e)}")
-                    # Re-raise the exception or handle it as required for your application's logic.
+                    # Re-raise the exception or handle it as required
                     raise
 
             else:
