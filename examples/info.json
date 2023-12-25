@@ -1,0 +1,30 @@
+{
+    "userName": "Ahrimdon#1597",
+    "identities": [
+        {
+            "platform": "battle",
+            "gamertag": "Ahrimdon#1597",
+            "accountID": null
+        },
+        {
+            "platform": "psn",
+            "gamertag": "MrCodBlackOp",
+            "accountID": null
+        },
+        {
+            "platform": "uno",
+            "gamertag": "Ahrimdon",
+            "accountID": null
+        },
+        {
+            "platform": "xbl",
+            "gamertag": "Ahrimdon",
+            "accountID": null
+        },
+        {
+            "platform": "youtube",
+            "gamertag": null,
+            "accountID": null
+        }
+    ]
+}
