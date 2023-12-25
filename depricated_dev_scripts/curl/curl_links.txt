@@ -15,8 +15,14 @@ https://my.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/ga
 # Get Maps & Game Modes (No $PROF Variable Needed)
 https://my.callofduty.com/api/papi-client/ce/v1/title/mw/platform/battle/gameType/mp/communityMapData/availability
 
-# Get Match Stats
-https://www.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/fullMatch/mp/matchID/it
 
-# Leaderboard
-https://www.callofduty.com/api/papi-client/leaderboards/v2/title/mw/platform/battle/time/alltime/type/core/mode/career/page/1
+# Get friendFeedEvents
+https://my.callofduty.com/api/papi-client/userfeed/v1/friendFeed/platform/battle/gamer/$PROF/friendFeedEvents/en
+
+https://my.callofduty.com/api/papi-client/userfeed/v1/friendFeed/rendered/en/{acct_sso_token}
+
+https://my.callofduty.com/api/papi-client/inventory/v1/title/mw/platform/battle/gamer/$PROF/currency
+
+https://my.callofduty.com/api/papi-client/crm/cod/v2/accounts/platform/battle/gamer/$PROF/
+
+https://my.callofduty.com/api/papi-client/preferences/v1/platform/battle/gamer/$PROF/list

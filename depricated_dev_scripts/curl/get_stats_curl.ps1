@@ -1,5 +1,5 @@
 # Set your default values here
-$PROF = "Ahrimdon%231597" # The % replaces the # for the Activision ID (e.g. Ahrimdon%231597)
+$PROF = "" # The % replaces the # for the Activision ID (e.g. Ahrimdon%231597)
 # You do not need numbers for PSN or XBL 
 # Delete $PROF when getting maps and game modes.
 $COOKIE_VALUE = "ACCT_SSO_COOKIE"
