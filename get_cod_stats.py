@@ -22,7 +22,7 @@ def save_to_file(data, filename, dir_name='stats'):
     with open(os.path.join(dir_name, filename), 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
-def get_and_save_data(player_name=None, all_stats=False, season_loot=False, identities=False, maps=False):
+def get_and_save_data(player_name=None, all_stats=False, season_loot=False, identities=False, maps=False, info=False, friendFeed=False, eventFeed=False, cod_points=False, connected_accounts=False, settings=False):
     # Create the stats directory if it doesn't exist
     DIR_NAME = 'stats'
     if not os.path.exists(DIR_NAME):
@@ -37,6 +37,12 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         with open(COOKIE_FILE, 'w') as f:
             f.write(api_key)
 
+    # Check if userInfo.json exists, create it if it doesn't
+    USER_INFO_FILE = os.path.join('userInfo.json')
+    if not os.path.exists(USER_INFO_FILE):
+        with open(USER_INFO_FILE, 'w') as f:
+            pass  # Creates an empty file
+
     # If player_name is not provided via command line, get it from user input
     if not player_name:
         player_name = input("Please enter the player's username (with #1234567): ")
@@ -46,7 +52,7 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
     
     # Retrieve data from API
     # First, determine if any specific optional arguments were given
-    if not (all_stats or season_loot or identities or maps):
+    if not (all_stats or season_loot or identities or maps or info or friendFeed or eventFeed or cod_points or connected_accounts or settings):
         # If no specific optional arguments are given, then default behavior:
         player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
         match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
@@ -56,15 +62,14 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         # If the all_stats argument is given:
         player_stats = api.ModernWarfare.fullData(platforms.Activision, player_name)
         match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
-        match_info = api.ModernWarfare.combatHistory(platforms.Activision, player_name)
         season_loot_data = api.ModernWarfare.seasonLoot(platforms.Activision, player_name)
-        map_list = api.ModernWarfare.mapList(platforms.Activision)
         identities_data = api.Me.loggedInIdentities()
+        map_list = api.ModernWarfare.mapList(platforms.Activision)
 
         info = api.Me.info()
         friendFeed = api.Me.friendFeed()
         eventFeed = api.Me.eventFeed()
-        cp = cod_points = api.Me.codPoints()
+        cod_points = api.Me.codPoints()
         connectedAccounts = api.Me.connectedAccounts()
         settings = api.Me.settings()
 
@@ -77,7 +82,7 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         save_to_file(info, 'info.json')
         save_to_file(friendFeed, 'friendFeed.json')
         save_to_file(eventFeed, 'eventFeed.json')
-        save_to_file(cp, 'cp.json')
+        save_to_file(cod_points, 'cp.json')
         save_to_file(connectedAccounts, 'connectedAccounts.json')
         save_to_file(settings, 'settings.json')
     else:
@@ -91,6 +96,25 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
         if maps:
             map_list = api.ModernWarfare.mapList(platforms.Activision)
             save_to_file(map_list, 'map_list.json')
+
+        if info:
+            info = api.Me.info()
+            save_to_file(info, 'info.json')
+        if friendFeed:
+            friendFeed = api.Me.friendFeed()
+            save_to_file(friendFeed, 'friendFeed.json')
+        if eventFeed:
+            eventFeed = api.Me.eventFeed()
+            save_to_file(eventFeed, 'eventFeed.json')
+        if cod_points:
+            cod_points = api.Me.codPoints()
+            save_to_file(cod_points, 'cp.json')
+        if connected_accounts:
+            connectedAccounts = api.Me.connectedAccounts()
+            save_to_file(connectedAccounts, 'connectedAccounts.json')
+        if settings:
+            settings = api.Me.settings()
+            save_to_file(settings, 'settings.json')
 
 # Save results to a JSON file inside the stats directory
 def recursive_key_replace(obj):
@@ -293,8 +317,14 @@ def main():
     group_data.add_argument("-p", "--player_name", type=str, help="Player's username (with #1234567)")
     group_data.add_argument("-a", "--all_stats", action="store_true", help="Fetch all the different types of stats data")
     group_data.add_argument("-sl", "--season_loot", action="store_true", help="Fetch only the season loot data")
-    group_data.add_argument("-i", "--identities", action="store_true", help="Fetch only the logged-in identities data")
+    group_data.add_argument("-id", "--identities", action="store_true", help="Fetch only the logged-in identities data")
     group_data.add_argument("-m", "--maps", action="store_true", help="Fetch only the map list data")
+    group_data.add_argument("-i", "--info", action="store_true", help="Fetch only general information")
+    group_data.add_argument("-f", "--friendFeed", action="store_true", help="Fetch only your friend feed")
+    group_data.add_argument("-e", "--eventFeed", action="store_true", help="Fetch only your event feed")
+    group_data.add_argument("-cp", "--cod_points", action="store_true", help="Fetch only your COD Point balance")
+    group_data.add_argument("-ca", "--connected_accounts", action="store_true", help="Fetch only the map list data")
+    group_data.add_argument("-s", "--settings", action="store_true", help="Fetch only your account settings")
 
     # Add arguments for Cleaning Options
     group_cleaning.add_argument("-c", "--clean", action="store_true", help="Beautify all data")
@@ -324,7 +354,7 @@ def main():
         beautify_data()
         beautify_match_data()
     else:
-        get_and_save_data(args.player_name, args.all_stats, args.season_loot, args.identities, args.maps)
+        get_and_save_data(args.player_name, args.all_stats, args.season_loot, args.identities, args.maps, args.info, args.friendFeed, args.eventFeed, args.cod_points, args.connected_accounts, args.settings)
 
 if __name__ == "__main__":
     main()

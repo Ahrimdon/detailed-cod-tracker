@@ -25,3 +25,6 @@ https://my.callofduty.com/api/papi-client/inventory/v1/title/mw/platform/battle/
 https://my.callofduty.com/api/papi-client/crm/cod/v2/accounts/platform/battle/gamer/$PROF/
 
 https://my.callofduty.com/api/papi-client/preferences/v1/platform/battle/gamer/$PROF/list
+
+# Get Bundle Info
+https://my.callofduty.com/api/papi-client/inventory/v1/title/mw/bundle/400525/en
