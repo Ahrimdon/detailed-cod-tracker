@@ -229,12 +229,15 @@ def replace_time_and_duration_recursive(data):
                  "timeSpentAsPassenger", "timeSpentAsDriver", "timeOnPoint", 
                  "timeWatchingKillcams", "timeCrouched", "timesSelectedAsSquadLeader", 
                  "longestTimeSpentOnWeapon", "avgLifeTime", "percentTimeMoving"]
+    date_keys = ["date", "updated", "originalDate"]
 
     if isinstance(data, list):
         for item in data:
             replace_time_and_duration_recursive(item)
     elif isinstance(data, dict):
         for key, value in data.items():
+            if key in date_keys:
+                data[key] = epoch_milli_to_human_readable(value)
             if key in time_keys:
                 data[key] = convert_duration_seconds(value)
             elif key == "utcStartSeconds":
@@ -249,6 +252,17 @@ def replace_time_and_duration_recursive(data):
                 data[key] = convert_duration_milliseconds(value)
             else:
                 replace_time_and_duration_recursive(value)
+
+def epoch_milli_to_human_readable(epoch_millis):
+    """
+    Convert epoch timestamp in milliseconds to human-readable date-time string.
+    """
+    if isinstance(epoch_millis, str):
+        return epoch_millis  # Already converted
+
+    dt_object = datetime.datetime.utcfromtimestamp(epoch_millis / 1000.0)
+    # date_str = dt_object.strftime("%Y-%m-%d %H:%M:%S")
+    return date_str
 
 def epoch_to_human_readable(epoch_timestamp, timezone='GMT'):
     if isinstance(epoch_timestamp, str):
