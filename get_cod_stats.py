@@ -152,13 +152,13 @@ def display_menu():
     choice = input("Enter your choice: ")
     return int(choice)
 
-def beautify_feed_data():
+def beautify_feed_data(timezone='GMT'):
     for feed_file in ['friendFeed.json', 'eventFeed.json']:
         file_path = os.path.join(DIR_NAME, feed_file)
         if os.path.exists(file_path):
             with open(file_path, 'r') as file:
                 data = json.load(file)
-            replace_time_and_duration_recursive(data)
+            replace_time_and_duration_recursive(data, timezone)
             data = recursive_key_replace(data)
             with open(file_path, 'w') as file:
                 json.dump(data, file, indent=4)
@@ -221,7 +221,7 @@ def sort_data(data):
                 data[key] = sort_data(value)
     return data
 
-def replace_time_and_duration_recursive(data):
+def replace_time_and_duration_recursive(data, timezone):
     """
     Recursively replace epoch times for specific keys in a nested dictionary or list.
     """
@@ -233,25 +233,25 @@ def replace_time_and_duration_recursive(data):
 
     if isinstance(data, list):
         for item in data:
-            replace_time_and_duration_recursive(item)
+            replace_time_and_duration_recursive(item, timezone)
     elif isinstance(data, dict):
         for key, value in data.items():
             if key in date_keys:
-                data[key] = epoch_milli_to_human_readable(value)
+                data[key] = epoch_milli_to_human_readable(value, timezone)
             if key in time_keys:
                 data[key] = convert_duration_seconds(value)
             elif key == "utcStartSeconds":
-                data[key] = epoch_to_human_readable(value)
+                data[key] = epoch_to_human_readable(value, timezone)
                 # For EST conversion: 
                 # data[key] = epoch_to_human_readable(value, "EST")
             elif key == "utcEndSeconds":
-                data[key] = epoch_to_human_readable(value)
+                data[key] = epoch_to_human_readable(value, timezone)
                 # For EST conversion:
                 # data[key] = epoch_to_human_readable(value, "EST")
             elif key == "duration":
                 data[key] = convert_duration_milliseconds(value)
             else:
-                replace_time_and_duration_recursive(value)
+                replace_time_and_duration_recursive(value, timezone)
 
 def epoch_milli_to_human_readable(epoch_millis, timezone='GMT'):
     """
@@ -266,6 +266,12 @@ def epoch_milli_to_human_readable(epoch_millis, timezone='GMT'):
     elif timezone == 'EST':
         dt_object -= datetime.timedelta(hours=4)  # Adjust for EST
         date_str = dt_object.strftime("EST: %A, %B %d, %Y %I:%M:%S %p")
+    elif timezone == 'CST':
+        dt_object -= datetime.timedelta(hours=5)  # Adjust for EST
+        date_str = dt_object.strftime("CST: %A, %B %d, %Y %I:%M:%S %p")
+    elif timezone == 'PST':
+        dt_object -= datetime.timedelta(hours=6)  # Adjust for EST
+        date_str = dt_object.strftime("PST: %A, %B %d, %Y %I:%M:%S %p")
     else:
         raise ValueError("Unsupported timezone.")
     return date_str
@@ -279,6 +285,12 @@ def epoch_to_human_readable(epoch_timestamp, timezone='GMT'):
     elif timezone == 'EST':
         dt_object -= datetime.timedelta(hours=4)  # Using 4 hours for EST conversion instead of 5?
         date_str = dt_object.strftime("EST: %A, %B %d, %Y %I:%M:%S %p")
+    elif timezone == 'CST':
+        dt_object -= datetime.timedelta(hours=5)  # Using 4 hours for EST conversion instead of 5?
+        date_str = dt_object.strftime("CST: %A, %B %d, %Y %I:%M:%S %p")
+    elif timezone == 'PST':
+        dt_object -= datetime.timedelta(hours=4)  # Using 4 hours for EST conversion instead of 5?
+        date_str = dt_object.strftime("PST: %A, %B %d, %Y %I:%M:%S %p")
     else:
         raise ValueError("Unsupported timezone.")
     return date_str
@@ -310,22 +322,22 @@ def convert_duration_seconds(seconds):
 
     return f"{days} Days {hours} Hours {minutes} Minutes {seconds} Seconds"
 
-def beautify_data():
+def beautify_data(timezone='GMT'):
     file_path = (os.path.join(DIR_NAME, 'stats.json'))
     with open(file_path, 'r') as file:
         data = json.load(file)
-    replace_time_and_duration_recursive(data)
+    replace_time_and_duration_recursive(data, timezone)
     data = recursive_key_replace(data)
     data = sort_data(data)
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
     print(f"Keys sorted and replaced in {file_path}.")
 
-def beautify_match_data():
+def beautify_match_data(timezone='GMT'):
     file_path = (os.path.join(DIR_NAME, 'match_info.json'))
     with open(file_path, 'r') as file:
         data = json.load(file)
-    replace_time_and_duration_recursive(data)
+    replace_time_and_duration_recursive(data, timezone)
     data = recursive_key_replace(data)
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
@@ -353,7 +365,7 @@ def split_matches_into_files():
         isinstance(sample_match.get("duration"), int)):
         
         print("Cleaning match data...")
-        replace_time_and_duration_recursive(data)
+        replace_time_and_duration_recursive(data, timezone)
         
         # Save the cleaned data back to match_info.json
         with open(os.path.join(DIR_NAME, 'match_info.json'), 'w') as file:
@@ -445,8 +457,12 @@ def main():
         parser = argparse.ArgumentParser(description="Detailed Modern Warfare (2019) Statistics Tool", epilog=help_text, formatter_class=argparse.RawDescriptionHelpFormatter)
 
         # Group related arguments
+        group_default = parser.add_argument_group("Default Options")
         group_data = parser.add_argument_group("Data Fetching Options")
         group_cleaning = parser.add_argument_group("Data Cleaning Options")
+        
+        # Add an argument for timezone
+        group_default.add_argument("-tz", "--timezone", type=str, default="GMT", choices=["GMT", "EST", "CST", "PST"], help="Specify the timezone (GMT, EST, CST, PST)")
 
         # Add arguments for Data Fetching Options
         group_data.add_argument("-p", "--player_name", type=str, help="Player's username (with #1234567)")
@@ -460,6 +476,7 @@ def main():
         group_data.add_argument("-cp", "--cod_points", action="store_true", help="Fetch only your COD Point balance")
         group_data.add_argument("-ca", "--connected_accounts", action="store_true", help="Fetch only the map list data")
         group_data.add_argument("-s", "--settings", action="store_true", help="Fetch only your account settings")
+        
 
         # Add arguments for Cleaning Options
         group_cleaning.add_argument("-c", "--clean", action="store_true", help="Beautify all data")
@@ -484,13 +501,13 @@ def main():
         if args.split_matches:
             split_matches_into_files()
         elif args.clean_stats_data:
-            beautify_data()
+            beautify_data(timezone=args.timezone)
         elif args.clean_match_data:
-            beautify_match_data()
+            beautify_match_data(timezone=args.timezone)
         elif args.clean:
-            beautify_data()
-            beautify_match_data()
-            beautify_feed_data()
+            beautify_data(timezone=args.timezone)
+            beautify_match_data(timezone=args.timezone)
+            beautify_feed_data(timezone=args.timezone)
             clean_json_files('friendFeed.json', 'eventFeed.json')
         elif args.clean_friend_feed:
             clean_json_files('friendFeed.json')
