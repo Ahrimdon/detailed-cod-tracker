@@ -126,22 +126,45 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
             save_to_file(settings, 'settings.json')
 
 def display_menu():
-    print("Please choose an option:")
-    print("1) Get all stats")
-    print("2) Get season loot")
-    print("3) Get identities")
-    print("4) Get map list")
+    print("\nBeautify Options:")
+    print("1) Beautify all data")
+    print("2) Split matches into separate files")
+
+    # Options Requiring Player Name
+    print("\nOptions Requiring Player Name:")
+    print("3) Get all stats")
+    print("4) Get identities")
     print("5) Get general information")
     print("6) Get friend feed")
     print("7) Get event feed")
     print("8) Get COD Point balance")
     print("9) Get connected accounts")
     print("10) Get account settings")
-    print("11) Beautify all data")
-    print("12) Split matches into separate files")
-    print("0) Exit")
+
+    # Options Not Requiring Player Name
+    print("\nOptions Not Requiring Player Name:")
+    print("11) Get season loot")
+    print("12) Get map list")
+
+    # Exit Option
+    print("\n0) Exit")
+
     choice = input("Enter your choice: ")
     return int(choice)
+
+def beautify_feed_data():
+    for feed_file in ['friendFeed.json', 'eventFeed.json']:
+        file_path = os.path.join(DIR_NAME, feed_file)
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                data = json.load(file)
+            replace_time_and_duration_recursive(data)
+            data = recursive_key_replace(data)
+            with open(file_path, 'w') as file:
+                json.dump(data, file, indent=4)
+            print(f"Keys sorted and replaced in {file_path}.")
+        else:
+            print(f"{feed_file} does not exist, skipping.")
 
 # Save results to a JSON file inside the stats directory
 def recursive_key_replace(obj):
@@ -172,7 +195,7 @@ def clean_json_files(*filenames, dir_name='stats'):
             modified_content = re.sub(regex_pattern, replace, content)
             with open(file_path, 'w') as file:
                 file.write(modified_content)
-            print(f"Cleaned {filename}.")
+            print(f"Removed unreadable strings from {filename}.")
         else:
             print(f"{filename} does not exist, skipping.")
 
@@ -359,37 +382,39 @@ def main():
         while True:
             choice = display_menu()
 
-            if choice in [1, 3, 5, 6, 7, 8, 9, 10]:
+            if choice in [3, 4, 5, 6, 7, 8, 9, 10, 11]:
                 player_name = input("Please enter the player's username (with #1234567): ")
-
-                if choice == 1:
+                if choice == 3:
                     get_and_save_data(player_name=player_name, all_stats=True)
-                elif choice == 3:
-                    get_and_save_data(player_name=player_name, identities=True)
+                if choice == 4:
+                    get_and_save_data(player_name=player_name, season_loot=True)
                 elif choice == 5:
-                    get_and_save_data(player_name=player_name, info=True)
+                    get_and_save_data(player_name=player_name, identities=True)
                 elif choice == 6:
-                    get_and_save_data(player_name=player_name, friendFeed=True)
+                    get_and_save_data(player_name=player_name, info=True)
                 elif choice == 7:
-                    get_and_save_data(player_name=player_name, eventFeed=True)
+                    get_and_save_data(player_name=player_name, friendFeed=True)
                 elif choice == 8:
-                    get_and_save_data(player_name=player_name, cod_points=True)
+                    get_and_save_data(player_name=player_name, eventFeed=True)
                 elif choice == 9:
-                    get_and_save_data(player_name=player_name, connected_accounts=True)
+                    get_and_save_data(player_name=player_name, cod_points=True)
                 elif choice == 10:
+                    get_and_save_data(player_name=player_name, connected_accounts=True)
+                elif choice == 11:
                     get_and_save_data(player_name=player_name, settings=True)
 
-            elif choice == 2:
-                get_and_save_data(season_loot=True)
-            elif choice == 4:
-                get_and_save_data(maps=True)
-            elif choice == 11:
+            elif choice == 1:
                 beautify_data()
                 beautify_match_data()
-                # beautify_feed_data()
+                beautify_feed_data()
                 clean_json_files('friendFeed.json', 'eventFeed.json')
-            elif choice == 12:
+            elif choice == 2:
                 split_matches_into_files()
+
+            elif choice == 12:
+                get_and_save_data(season_loot=True)
+            elif choice == 13:
+                get_and_save_data(maps=True)
             elif choice == 0:
                 print("Exiting...")
                 break
@@ -446,8 +471,8 @@ def main():
         elif args.clean:
             beautify_data()
             beautify_match_data()
-            # beautify_feed_data()
-            # clean_json_files('friendFeed.json', 'eventFeed.json')
+            beautify_feed_data()
+            clean_json_files('friendFeed.json', 'eventFeed.json')
         elif args.clean_friend_feed:
             clean_json_files('friendFeed.json')
         elif args.clean_event_feed:
