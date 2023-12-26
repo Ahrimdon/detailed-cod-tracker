@@ -161,7 +161,7 @@ def recursive_key_replace(obj):
         return replacements.get(obj, obj) if isinstance(obj, str) else obj
 
 def clean_json_files(*filenames, dir_name='stats'):
-    regex_pattern = r'&lt;span class=&quot;|&lt;/span&gt;|&quot;&gt;|mp-stat-items|kills-value|headshots-value|username|game-mode|kdr-value'
+    regex_pattern = r'&lt;span class=&quot;|&lt;/span&gt;|&quot;&gt;|mp-stat-items|kills-value|headshots-value|username|game-mode|kdr-value|accuracy-value'
     replace = ''
 
     for filename in filenames:
@@ -354,36 +354,39 @@ def main():
             with open(COOKIE_FILE, 'w') as f:
                 f.write(api_key)
 
-        player_name = input("Please enter the player's username (with #1234567): ")
         api.login(api_key)
 
         while True:
             choice = display_menu()
 
-            if choice == 1:
-                get_and_save_data(player_name, all_stats=True)
+            if choice in [1, 3, 5, 6, 7, 8, 9, 10]:
+                player_name = input("Please enter the player's username (with #1234567): ")
+
+                if choice == 1:
+                    get_and_save_data(player_name=player_name, all_stats=True)
+                elif choice == 3:
+                    get_and_save_data(player_name=player_name, identities=True)
+                elif choice == 5:
+                    get_and_save_data(player_name=player_name, info=True)
+                elif choice == 6:
+                    get_and_save_data(player_name=player_name, friendFeed=True)
+                elif choice == 7:
+                    get_and_save_data(player_name=player_name, eventFeed=True)
+                elif choice == 8:
+                    get_and_save_data(player_name=player_name, cod_points=True)
+                elif choice == 9:
+                    get_and_save_data(player_name=player_name, connected_accounts=True)
+                elif choice == 10:
+                    get_and_save_data(player_name=player_name, settings=True)
+
             elif choice == 2:
-                get_and_save_data(player_name, season_loot=True)
-            elif choice == 3:
-                get_and_save_data(player_name, identities=True)
+                get_and_save_data(season_loot=True)
             elif choice == 4:
-                get_and_save_data(player_name, maps=True)
-            elif choice == 5:
-                get_and_save_data(player_name, info=True)
-            elif choice == 6:
-                get_and_save_data(player_name, friendFeed=True)
-            elif choice == 7:
-                get_and_save_data(player_name, eventFeed=True)
-            elif choice == 8:
-                get_and_save_data(player_name, cod_points=True)
-            elif choice == 9:
-                get_and_save_data(player_name, connected_accounts=True)
-            elif choice == 10:
-                get_and_save_data(player_name, settings=True)
+                get_and_save_data(maps=True)
             elif choice == 11:
                 beautify_data()
                 beautify_match_data()
-                beautify_feed_data()
+                # beautify_feed_data()
                 clean_json_files('friendFeed.json', 'eventFeed.json')
             elif choice == 12:
                 split_matches_into_files()
@@ -443,8 +446,8 @@ def main():
         elif args.clean:
             beautify_data()
             beautify_match_data()
-            beautify_feed_data()
-            clean_json_files('friendFeed.json', 'eventFeed.json')
+            # beautify_feed_data()
+            # clean_json_files('friendFeed.json', 'eventFeed.json')
         elif args.clean_friend_feed:
             clean_json_files('friendFeed.json')
         elif args.clean_event_feed:
