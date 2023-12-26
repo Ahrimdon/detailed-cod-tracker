@@ -125,6 +125,24 @@ def get_and_save_data(player_name=None, all_stats=False, season_loot=False, iden
             settings = api.Me.settings()
             save_to_file(settings, 'settings.json')
 
+def display_menu():
+    print("Please choose an option:")
+    print("1) Get all stats")
+    print("2) Get season loot")
+    print("3) Get identities")
+    print("4) Get map list")
+    print("5) Get general information")
+    print("6) Get friend feed")
+    print("7) Get event feed")
+    print("8) Get COD Point balance")
+    print("9) Get connected accounts")
+    print("10) Get account settings")
+    print("11) Beautify all data")
+    print("12) Split matches into separate files")
+    print("0) Exit")
+    choice = input("Enter your choice: ")
+    return int(choice)
+
 # Save results to a JSON file inside the stats directory
 def recursive_key_replace(obj):
     if isinstance(obj, dict):
@@ -184,7 +202,6 @@ def replace_time_and_duration_recursive(data):
     """
     Recursively replace epoch times for specific keys in a nested dictionary or list.
     """
-
     time_keys = ["timePlayedTotal", "timePlayed", "objTime", "time", "timeProne", 
                  "timeSpentAsPassenger", "timeSpentAsDriver", "timeOnPoint", 
                  "timeWatchingKillcams", "timeCrouched", "timesSelectedAsSquadLeader", 
@@ -193,25 +210,20 @@ def replace_time_and_duration_recursive(data):
     if isinstance(data, list):
         for item in data:
             replace_time_and_duration_recursive(item)
-
     elif isinstance(data, dict):
         for key, value in data.items():
             if key in time_keys:
                 data[key] = convert_duration_seconds(value)
-            
             elif key == "utcStartSeconds":
                 data[key] = epoch_to_human_readable(value)
                 # For EST conversion: 
                 # data[key] = epoch_to_human_readable(value, "EST")
-                
             elif key == "utcEndSeconds":
                 data[key] = epoch_to_human_readable(value)
                 # For EST conversion:
                 # data[key] = epoch_to_human_readable(value, "EST")
-                
             elif key == "duration":
                 data[key] = convert_duration_milliseconds(value)
-            
             else:
                 replace_time_and_duration_recursive(value)
 
@@ -332,61 +344,113 @@ def main():
     - Enter the value when prompted
     """
 
-    parser = argparse.ArgumentParser(description="Detailed Modern Warfare (2019) Statistics Tool", epilog=help_text, formatter_class=argparse.RawDescriptionHelpFormatter)
+    # Check if the script is run without any additional command-line arguments
+    if len(sys.argv) == 1:
+        if os.path.exists(COOKIE_FILE):
+            with open(COOKIE_FILE, 'r') as f:
+                api_key = f.read().strip()
+        else:
+            api_key = input("Please enter your ACT_SSO_COOKIE: ")
+            with open(COOKIE_FILE, 'w') as f:
+                f.write(api_key)
 
-    # Group related arguments
-    group_data = parser.add_argument_group("Data Fetching Options")
-    group_cleaning = parser.add_argument_group("Data Cleaning Options")
+        player_name = input("Please enter the player's username (with #1234567): ")
+        api.login(api_key)
 
-    # Add arguments for Data Fetching Options
-    group_data.add_argument("-p", "--player_name", type=str, help="Player's username (with #1234567)")
-    group_data.add_argument("-a", "--all_stats", action="store_true", help="Fetch all the different types of stats data")
-    group_data.add_argument("-sl", "--season_loot", action="store_true", help="Fetch only the season loot data")
-    group_data.add_argument("-id", "--identities", action="store_true", help="Fetch only the logged-in identities data")
-    group_data.add_argument("-m", "--maps", action="store_true", help="Fetch only the map list data")
-    group_data.add_argument("-i", "--info", action="store_true", help="Fetch only general information")
-    group_data.add_argument("-f", "--friendFeed", action="store_true", help="Fetch only your friend feed")
-    group_data.add_argument("-e", "--eventFeed", action="store_true", help="Fetch only your event feed")
-    group_data.add_argument("-cp", "--cod_points", action="store_true", help="Fetch only your COD Point balance")
-    group_data.add_argument("-ca", "--connected_accounts", action="store_true", help="Fetch only the map list data")
-    group_data.add_argument("-s", "--settings", action="store_true", help="Fetch only your account settings")
+        while True:
+            choice = display_menu()
 
-    # Add arguments for Cleaning Options
-    group_cleaning.add_argument("-c", "--clean", action="store_true", help="Beautify all data")
-    group_cleaning.add_argument("-sm", "--split_matches", action="store_true", help="Split the matches into separate JSON files within the 'matches' subfolder")
-    group_cleaning.add_argument("-csd", "--clean_stats_data", action="store_true", help="Beautify the data and convert to human-readable strings in stats.json")
-    group_cleaning.add_argument("-cmd", "--clean_match_data", action="store_true", help="Beautify the match data and convert to human-readable strings in match_info.json")
-    group_cleaning.add_argument("-cff", "--clean_friend_feed", action="store_true", help="Clean the friend feed data")
-    group_cleaning.add_argument("-cef", "--clean_event_feed", action="store_true", help="Clean the event feed data")
-
-    args = parser.parse_args()
-
-    # Custom error handling
-    # try:
-    #     args = parser.parse_args()
-    # except SystemExit:
-    #     # Check if 'player_name' is in sys.argv, if not, raise exception
-    #     if '--player_name' not in sys.argv and '-p' not in sys.argv:
-    #         print('You must specify a player name!')
-    #     # Otherwise, re-raise the error or print the default error message.
-    #     sys.exit(1)
-
-    if args.split_matches:
-        split_matches_into_files()
-    elif args.clean_stats_data:
-        beautify_data()
-    elif args.clean_match_data:
-        beautify_match_data()
-    elif args.clean:
-        beautify_data()
-        beautify_match_data()
-        clean_json_files('friendFeed.json', 'eventFeed.json')
-    elif args.clean_friend_feed:
-        clean_json_files('friendFeed.json')
-    elif args.clean_event_feed:
-        clean_json_files('eventFeed.json')
+            if choice == 1:
+                get_and_save_data(player_name, all_stats=True)
+            elif choice == 2:
+                get_and_save_data(player_name, season_loot=True)
+            elif choice == 3:
+                get_and_save_data(player_name, identities=True)
+            elif choice == 4:
+                get_and_save_data(player_name, maps=True)
+            elif choice == 5:
+                get_and_save_data(player_name, info=True)
+            elif choice == 6:
+                get_and_save_data(player_name, friendFeed=True)
+            elif choice == 7:
+                get_and_save_data(player_name, eventFeed=True)
+            elif choice == 8:
+                get_and_save_data(player_name, cod_points=True)
+            elif choice == 9:
+                get_and_save_data(player_name, connected_accounts=True)
+            elif choice == 10:
+                get_and_save_data(player_name, settings=True)
+            elif choice == 11:
+                beautify_data()
+                beautify_match_data()
+                beautify_feed_data()
+                clean_json_files('friendFeed.json', 'eventFeed.json')
+            elif choice == 12:
+                split_matches_into_files()
+            elif choice == 0:
+                print("Exiting...")
+                break
+            else:
+                print("Invalid choice. Please try again.")
+                continue
+            break
     else:
-        get_and_save_data(args.player_name, args.all_stats, args.season_loot, args.identities, args.maps, args.info, args.friendFeed, args.eventFeed, args.cod_points, args.connected_accounts, args.settings)
+        parser = argparse.ArgumentParser(description="Detailed Modern Warfare (2019) Statistics Tool", epilog=help_text, formatter_class=argparse.RawDescriptionHelpFormatter)
+
+        # Group related arguments
+        group_data = parser.add_argument_group("Data Fetching Options")
+        group_cleaning = parser.add_argument_group("Data Cleaning Options")
+
+        # Add arguments for Data Fetching Options
+        group_data.add_argument("-p", "--player_name", type=str, help="Player's username (with #1234567)")
+        group_data.add_argument("-a", "--all_stats", action="store_true", help="Fetch all the different types of stats data")
+        group_data.add_argument("-sl", "--season_loot", action="store_true", help="Fetch only the season loot data")
+        group_data.add_argument("-id", "--identities", action="store_true", help="Fetch only the logged-in identities data")
+        group_data.add_argument("-m", "--maps", action="store_true", help="Fetch only the map list data")
+        group_data.add_argument("-i", "--info", action="store_true", help="Fetch only general information")
+        group_data.add_argument("-f", "--friendFeed", action="store_true", help="Fetch only your friend feed")
+        group_data.add_argument("-e", "--eventFeed", action="store_true", help="Fetch only your event feed")
+        group_data.add_argument("-cp", "--cod_points", action="store_true", help="Fetch only your COD Point balance")
+        group_data.add_argument("-ca", "--connected_accounts", action="store_true", help="Fetch only the map list data")
+        group_data.add_argument("-s", "--settings", action="store_true", help="Fetch only your account settings")
+
+        # Add arguments for Cleaning Options
+        group_cleaning.add_argument("-c", "--clean", action="store_true", help="Beautify all data")
+        group_cleaning.add_argument("-sm", "--split_matches", action="store_true", help="Split the matches into separate JSON files within the 'matches' subfolder")
+        group_cleaning.add_argument("-csd", "--clean_stats_data", action="store_true", help="Beautify the data and convert to human-readable strings in stats.json")
+        group_cleaning.add_argument("-cmd", "--clean_match_data", action="store_true", help="Beautify the match data and convert to human-readable strings in match_info.json")
+        group_cleaning.add_argument("-cff", "--clean_friend_feed", action="store_true", help="Clean the friend feed data")
+        group_cleaning.add_argument("-cef", "--clean_event_feed", action="store_true", help="Clean the event feed data")
+
+        args = parser.parse_args()
+
+        # Custom error handling
+        # try:
+        #     args = parser.parse_args()
+        # except SystemExit:
+        #     # Check if 'player_name' is in sys.argv, if not, raise exception
+        #     if '--player_name' not in sys.argv and '-p' not in sys.argv:
+        #         print('You must specify a player name!')
+        #     # Otherwise, re-raise the error or print the default error message.
+        #     sys.exit(1)
+
+        if args.split_matches:
+            split_matches_into_files()
+        elif args.clean_stats_data:
+            beautify_data()
+        elif args.clean_match_data:
+            beautify_match_data()
+        elif args.clean:
+            beautify_data()
+            beautify_match_data()
+            beautify_feed_data()
+            clean_json_files('friendFeed.json', 'eventFeed.json')
+        elif args.clean_friend_feed:
+            clean_json_files('friendFeed.json')
+        elif args.clean_event_feed:
+            clean_json_files('eventFeed.json')
+        else:
+            get_and_save_data(args.player_name, args.all_stats, args.season_loot, args.identities, args.maps, args.info, args.friendFeed, args.eventFeed, args.cod_points, args.connected_accounts, args.settings)
 
 if __name__ == "__main__":
     main()

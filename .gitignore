@@ -1,6 +1,8 @@
 __pycache__
 uninstall.*
 venv.*
+/cod_pics
 /venv
-/HTML
 /stats
+/userInfo.json
+/cookie*
