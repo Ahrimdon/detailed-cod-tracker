@@ -253,17 +253,22 @@ def replace_time_and_duration_recursive(data):
             else:
                 replace_time_and_duration_recursive(value)
 
-def epoch_milli_to_human_readable(epoch_millis):
+def epoch_milli_to_human_readable(epoch_millis, timezone='GMT'):
     """
-    Convert epoch timestamp in milliseconds to human-readable date-time string.
+    Convert epoch timestamp in milliseconds to a human-readable date-time string with timezone.
     """
     if isinstance(epoch_millis, str):
         return epoch_millis  # Already converted
 
     dt_object = datetime.datetime.utcfromtimestamp(epoch_millis / 1000.0)
-    # date_str = dt_object.strftime("%Y-%m-%d %H:%M:%S")
+    if timezone == 'GMT':
+        date_str = dt_object.strftime("GMT: %A, %B %d, %Y %I:%M:%S %p")
+    elif timezone == 'EST':
+        dt_object -= datetime.timedelta(hours=4)  # Adjust for EST
+        date_str = dt_object.strftime("EST: %A, %B %d, %Y %I:%M:%S %p")
+    else:
+        raise ValueError("Unsupported timezone.")
     return date_str
-
 def epoch_to_human_readable(epoch_timestamp, timezone='GMT'):
     if isinstance(epoch_timestamp, str):
         return epoch_timestamp  # Already converted
