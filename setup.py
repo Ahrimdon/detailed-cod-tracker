@@ -21,6 +21,9 @@ def setup_api():
     wheel_path = os.path.join('deps', 'cod_api-2.0.2-py3-none-any.whl')
     subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'install', '--no-index', '--find-links=deps', wheel_path])
 
+def remove_deprecated_packages():
+    subprocess.check_call([os.path.join('venv', 'Scripts', 'pip'), 'uninstall', 'enum34', '-y'])
+
 if __name__ == "__main__":
     if not deps_exists():
         print("Error: 'deps' directory does not exist!")
@@ -31,4 +34,5 @@ if __name__ == "__main__":
     print("Setting up virtual environment...")
     setup_tools()
     setup_api()
-    print("Setup complete.")
+    remove_deprecated_packages()
+    print("Setup completed successfully.")
