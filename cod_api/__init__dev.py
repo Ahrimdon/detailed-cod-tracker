@@ -89,7 +89,7 @@ class API:
         cachedMappings = None
 
         fakeXSRF = str(uuid.uuid4())
-        baseUrl: str = "https://my.callofduty.com/api/papi-client"
+        baseUrl: str = "https://profile.callofduty.com/api/papi-client"
         loggedIn: bool = False
 
         # endPoints
