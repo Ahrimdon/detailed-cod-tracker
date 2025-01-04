@@ -4,7 +4,6 @@ import json
 import os
 import argparse
 from cod_api import API, platforms
-from cod_api.replacements import replacements
 import asyncio
 import datetime
 
@@ -17,6 +16,17 @@ api = API()
 COOKIE_FILE = 'cookie.txt'
 DIR_NAME = 'stats'
 MATCH_DIR_NAME = 'matches'
+REPLACEMENTS_FILE = 'data/replacements.json'
+
+# Load replacements from JSON
+def load_replacements():
+    """Load replacements from the JSON file."""
+    if not os.path.exists(REPLACEMENTS_FILE):
+        raise FileNotFoundError(f"{REPLACEMENTS_FILE} not found. Ensure it exists in the script's directory.")
+    with open(REPLACEMENTS_FILE, 'r') as file:
+        return json.load(file)
+
+replacements = load_replacements()
 
 def save_to_file(data, filename, dir_name='stats'):
     """Utility function to save data to a JSON file."""
