@@ -4,7 +4,7 @@ import subprocess
 import PyInstaller.__main__
 
 # Constants for your project
-SCRIPT = "get_cod_stats.py"
+SCRIPT = "main.py"
 ICON = "assets/icon.ico"
 NAME = "get_cod_stats"
 DIST_PATH = "bin"
