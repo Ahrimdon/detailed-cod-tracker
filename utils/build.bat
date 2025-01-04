@@ -2,9 +2,9 @@
 
 cd /d %~dp0  :: Change directory to the location of this batch file
 call ../venv/Scripts/activate  :: Activate the virtual environment
-pyinstaller --noconfirm --onefile --console --icon "../assets/icon.ico" main.py --distpath="../build/bin" -n "get_cod_stats"
+pyinstaller --noconfirm --onefile --console --icon "../assets/icon.ico" main.py --distpath="../build/bin" -n "cod_api_tool"
 
 rmdir /s /q build
-del /q "get_cod_stats.spec"
+del /q "cod_api_tool.spec"
 
 pause

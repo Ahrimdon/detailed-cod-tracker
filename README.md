@@ -35,12 +35,12 @@ Get every single statistic Call of Duty <u>***tracks***</u> in one place, under 
 
 ## Installation
 #### Using the Latest Release **(Easiest)**
-- Navigate to the latest release and download `get_cod_stats.exe`
+- Navigate to the latest release and download `cod_api_tool.exe`
 - Open a command line of your choise, navigate to the directory using `cd` and follow examples below
 ```
 cd "C:\Users\John\Desktop\detailed-cod-tracker"
 
-get_cod_stats.exe [-h] [-p PLAYER_NAME] [-a] [-sl] [-id] [-m] [-i] [-f] [-e] [-cp] [-ca] [-s] [-c] [-sm] [-csd] [-cmd] [-cff] [-cef]
+cod_api_tool.exe [-h] [-p PLAYER_NAME] [-a] [-sl] [-id] [-m] [-i] [-f] [-e] [-cp] [-ca] [-s] [-c] [-sm] [-csd] [-cmd] [-cff] [-cef]
 ```
 
 #### Cloning the Repository
@@ -62,13 +62,13 @@ get_cod_stats.exe [-h] [-p PLAYER_NAME] [-a] [-sl] [-id] [-m] [-i] [-f] [-e] [-c
 3. Go to `https://profile.callofduty.com/cod/userInfo/{ACT_SSO_COOKIE}` and copy the contents into `userInfo.json` in the repo's directory
   > *Note:* Create the `userInfo.json` file manually
 4. In the newly created `userInfo.json`, delete "*userInfo(*" and "*);*" at the beginning and end of the file. Alternatively, you can find and replace using the regular expression inside `sanitize_userInfo_regex.txt`
-5. Run `get_cod_stats.py` using the `-a` argument (e.g. `python get_cod_stats.py -p Ahrimdon -a`)
+5. Run `cod_api_tool.py` using the `-a` argument (e.g. `python cod_api_tool.py -p Ahrimdon -a`)
 
 If done correctly, this should return the extra API information.
 
 ## Command Line Arguments
 ```
-usage: get_cod_stats.py [-h] [-p PLAYER_NAME] [-a] [-sl] [-id] [-m] [-i] [-f] [-e] [-cp] [-ca] [-s] [-c] [-sm] [-csd] [-cmd] [-cff] [-cef]
+usage: cod_api_tool.py [-h] [-p PLAYER_NAME] [-a] [-sl] [-id] [-m] [-i] [-f] [-e] [-cp] [-ca] [-s] [-c] [-sm] [-csd] [-cmd] [-cff] [-cef]
 
 Detailed Modern Warfare (2019) Statistics Tool
 
@@ -106,23 +106,23 @@ Data Cleaning Options:
 ## Command Examples
 **Gather Player's Lifetime Statistics & 20 Recent Games**
 ```
-get_cod_stats.exe -p Ahrimdon#1234567
+cod_api_tool.exe -p Ahrimdon#1234567
 ```
 
 **Sort, clean, and organize all data**
 
 ```
-get_cod_stats.exe -c
+cod_api_tool.exe -c
 ```
 
 **Split matches into separate files**
 ```
-get_cod_stats.exe -sm
+cod_api_tool.exe -sm
 ```
 
 **Gather all data**
 ```
-get_cod_stats.exe -p Ahrimdon#1234567 -a
+cod_api_tool.exe -p Ahrimdon#1234567 -a
 ```
 
 > All data is saved to `/stats/`

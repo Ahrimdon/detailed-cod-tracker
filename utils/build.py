@@ -6,7 +6,7 @@ import PyInstaller.__main__
 # Constants for your project
 SCRIPT = "main.py"
 ICON = "assets/icon.ico"
-NAME = "get_cod_stats"
+NAME = "cod_api_tool"
 DIST_PATH = "bin"
 
 # Path to the 'frequencies.json' file within the charset_normalizer package
@@ -30,7 +30,7 @@ PyInstaller.__main__.run([
 
 # Clean up the build directory and spec file
 shutil.rmtree('build', ignore_errors=True)
-os.remove('get_cod_stats.spec')
+os.remove('cod_api_tool.spec')
 
 # Optional: Pause at the end (like the 'pause' in batch script)
 input("Press Enter to continue...")
