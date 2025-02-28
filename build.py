@@ -5,7 +5,7 @@ import subprocess
 import PyInstaller.__main__
 
 # Initialize constants
-SCRIPT = "refactor.py"
+SCRIPT = "cod_api_tool.py"
 ICON = "assets/icon.ico"
 NAME = "cod_api_tool"
 DIST_PATH = "bin/build"
