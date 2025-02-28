@@ -121,7 +121,7 @@ class CodStatsManager:
         self.save_to_file(identities_data, 'identities.json')
         
         # Check if userInfo.json exists to determine if we should fetch additional data
-        user_info_file = os.path.join(STATS_DIR, 'userInfo.json')
+        user_info_file = os.path.join('userInfo.json')
         if os.path.exists(user_info_file):
             # Additional user data
             info = api.Me.info()
@@ -129,14 +129,8 @@ class CodStatsManager:
             event_feed = api.Me.eventFeed()
             cod_points = api.Me.codPoints()
             connected_accounts = api.Me.connectedAccounts()
-            
-            try:
-                settings = api.Me.settings()
-                # Make sure settings is JSON serializable
-                self.save_to_file(self._ensure_json_serializable(settings), 'settings.json')
-            except TypeError as e:
-                print(f"Warning: Could not save settings due to serialization error: {e}")
-            
+            settings = api.Me.settings()
+
             # Save additional data
             self.save_to_file(info, 'info.json')
             self.save_to_file(friend_feed, 'friendFeed.json')
